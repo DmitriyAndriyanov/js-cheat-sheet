@@ -1,0 +1,41 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Description",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "authors": [
+    "Andriianov Dmytro <dimand81179@gmail.com>"
+  ],
+  "keywords": [
+    "Website"
+  ],
+  "scripts": {
+    "build": "gulp build"
+  },
+  "license": "ISC",
+  "homepage": "Website",
+  "dependencies": {
+    "del": "^5.1.0",
+    "jquery": "^3.*",
+    "jquery-migrate": "^3.*"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1"
+  }
+}
