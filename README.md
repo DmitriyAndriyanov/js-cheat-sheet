@@ -1,11 +1,11 @@
-# Starter Kit
+# JavaScript Cheat Sheet
 
 ## Quickstart & Prerequisites
 
 ### [Node.js](https://nodejs.org)
 
 Bring up a terminal and type `$ node -v`.
-Node should respond with a version at or above 12.0.x.
+Node should respond with a version at 16.13.2.
 If you need to install Node, go to [nodejs.org](https://nodejs.org) and click on the big green Install button.
 
 ### [Gulp](http://gulpjs.com)
@@ -43,7 +43,7 @@ $ gulp
 ## Project Structure
 ````
 ├── src              #The folder for developers, in which all the source codes of the project are located
-├── public           #A folder that contains optimized finished pages with all the necessary resources
+├── docs             #A folder that contains optimized finished pages with all the necessary resources
 ├── gulpfile.js      #File with gulp tasks
 └── package.json     #File with dependencies
 ````

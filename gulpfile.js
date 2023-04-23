@@ -1,5 +1,5 @@
 const gulp = require('gulp'),
-      sass = require('gulp-sass'),
+      sass = require('gulp-sass')(require('sass')),
       rigger = require('gulp-rigger'),
       plumber = require('gulp-plumber'),
       autoprefixer = require('gulp-autoprefixer'),
@@ -15,7 +15,6 @@ const path = {
   build: {
     html: 'docs/',
     styles: 'docs/css/',
-    fonts: 'docs/fonts/',
     img: 'docs/images/',
     js: 'docs/js/'
   },
@@ -23,7 +22,6 @@ const path = {
     html: 'src/*.html',
     cssLibs: 'src/styles/libs/**/*',
     styles: 'src/styles/*.scss',
-    fonts: 'src/fonts/**/*',
     img: 'src/images/**/*',
     jsLibs: 'src/js/libs/**/*.js',
     js: 'src/js/script/**/*.js'
@@ -35,12 +33,11 @@ function styles() {
   return gulp.src([path.src.cssLibs, path.src.styles])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    //.pipe(minifyCss())
+    .pipe(minifyCss())
     .pipe(concat('styles.css'))
     .pipe(sourcemaps.write('.'))
-    .on('error', logError)
     .pipe(gulp.dest(path.build.styles))
     .pipe(browserSync.stream());
 }
@@ -67,19 +64,11 @@ function html() {
     .pipe(browserSync.stream());
 }
 
-// Fonts
-function fonts() {
-  return gulp.src(path.src.fonts)
-    .on('error', logError)
-    .pipe(gulp.dest(path.build.fonts))
-    .pipe(browserSync.stream());
-}
-
 // Images
 function images() {
   return gulp.src(path.src.img)
     .pipe(plumber())
-    //.pipe(imagemin())
+    .pipe(imagemin())
     .on('error', logError)
     .pipe(gulp.dest(path.build.img))
     .pipe(browserSync.stream());
@@ -108,7 +97,6 @@ gulp.task('watch', () => {
   const watch = [
     'src/*.html', // html
     'src/styles/**/*.scss', // styles
-    'src/fonts/*.*', // fonts
     'src/images/**', // img
     'src/js/**/*.js' // js
   ];
@@ -135,12 +123,9 @@ gulp.task('html', html);
 // Run images task
 gulp.task('images', images);
 
-// Run fonts task
-gulp.task('fonts', fonts);
-
 // Task for deleting files in the public folder and running styles and scripts
-gulp.task('build', gulp.series('clear','styles', 'scripts', 'html', 'fonts', 'images'));
+gulp.task('build', gulp.series('clear','styles', 'scripts', 'html', 'images'));
 // Task for generating files for development
-gulp.task('dev', gulp.series(gulp.parallel('styles', 'scripts', 'html', 'fonts', 'images')));
+gulp.task('dev', gulp.series(gulp.parallel('styles', 'scripts', 'html', 'images')));
 // Default Gulp Task with watching changes
 gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
