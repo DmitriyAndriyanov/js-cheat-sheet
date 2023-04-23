@@ -13,11 +13,11 @@ const gulp = require('gulp'),
 
 const path = {
   build: {
-    html: 'public/',
-    styles: 'public/css/',
-    fonts: 'public/fonts/',
-    img: 'public/images/',
-    js: 'public/js/'
+    html: 'docs/',
+    styles: 'docs/css/',
+    fonts: 'docs/fonts/',
+    img: 'docs/images/',
+    js: 'docs/js/'
   },
   src: {
     html: 'src/*.html',
@@ -86,13 +86,13 @@ function images() {
 }
 
 // Task for deleting files in the public folder
-gulp.task('clear', () => del(['public/*']));
+gulp.task('clear', () => del(['docs/*']));
 
 // Task for browser synchronization
 gulp.task('serve', () => {
   return browserSync.init({
     server: {
-      baseDir: [ 'public' ]
+      baseDir: [ 'docs' ]
     },
     port: 3000,
     open: false
