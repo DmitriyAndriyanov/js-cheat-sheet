@@ -13,6 +13,7 @@
   <!-- Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://kit.fontawesome.com/7cff9dd751.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="wrapper">
@@ -38,66 +39,405 @@
     <!-- header end -->
     <!-- main content begin -->
     <main id="main">
-
-
-
-
-      <div class="row">
-        <div class="col-3">
+      <div class="data-row">
+        <div class="data-column">
           <div class="block">
-            <div class="heading collapsed" data-bs-toggle="collapse" data-bs-target="#collapseExample">
-              <h2>Переменные и типы данных</h2>
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseVariables">
+              <h2>Переменные</h2>
             </div>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse show" id="collapseVariables">
               <div class="item">
-                Переменные
-
-                <div class="icons">
-                  <button class="btn btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">?</button>
+                <pre>var a;                       // var - variable</pre>
+                <!-- example and info buttons begin -->
+                <div class="buttons">
+                  <button class="btn btn-more" data-bs-toggle="modal" data-bs-target="#varInfoModal" data-toggle="tooltip" title="Больше информации">
+                    <i class="fas fa-question"></i>
+                  </button>
                 </div>
-              </div>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Переменные</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      ПеременныеПеременные ПеременныеПеременные
+                <!-- example and info buttons end -->
+                <!-- modal window begin -->
+                <div class="modal fade" id="varInfoModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3>Объявление переменной с помощью "var"</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Основное отличие объявление переменной с помощью <strong>var</strong> - это область видимости такой переменной.</p>
+                        <p>Для <strong>var</strong> не существует блочной области видимости.</p>
+                        <p>Если переменная создаётся внутри объявления функции, то её область видимости определяется как локальная и ограничивается этой функцией (т.е. будет доступна только внутри этой функции и вложенных в неё функциях).</p>
+                        <p>Если такие переменные используются внутри цикла <strong>for</strong> или проверки <strong>if</strong>, то они будут видны и за пределами этих блоков.</p>
+                        <pre>
+if (true) {
+  var test = true; // используем var вместо let
+}
 
+alert(test); // true, переменная существует вне блока if</pre>
+                        <pre>
+for (var i = 0; i < 10; i++) {
+  // ...
+}
+
+alert(i); // 10, переменная i доступна вне цикла, т.к. является глобальной переменной</pre>
+                        <pre>
+function sayHi() {
+  if (true) {
+    var phrase = "Привет";
+  }
+
+  alert(phrase); // срабатывает и выводит "Привет"
+}
+
+sayHi();
+alert(phrase); // Ошибка: phrase не определена (видна в консоли разработчика)</pre>
+                        <p>Если переменная объявляется не внутри функции, то она считается глобальной и ограничивается скриптом.</p>
+                        <h4>«var» допускает повторное объявление</h4>
+                        <p>Если в блоке кода дважды объявить одну и ту же переменную <strong>let</strong>, будет ошибка. Используя <strong>var</strong>, можно переобъявлять переменную сколько угодно раз. Повторные <strong>var</strong> игнорируются:</p>
+                        <pre>
+var user = "Pete";
+
+var user; // ничего не делает, переменная объявлена раньше
+// ...нет ошибки
+
+alert(user); // Pete</pre>
+                        <p>Если дополнительно присвоить значение, то переменная примет новое значение:</p>
+                        <pre>
+var user = "Pete";
+
+var user = "John";
+
+alert(user); // John</pre>
+                        <h4>«var» обрабатываются в начале запуска функции</h4>
+                        <p>Объявления переменных <strong>var</strong> обрабатываются в начале выполнения функции (или запуска скрипта, если переменная является глобальной).</p>
+                        <p>Другими словами, переменные <strong>var</strong> считаются объявленными с самого начала исполнения функции вне зависимости от того, в каком месте функции реально находятся их объявления (при условии, что они не находятся во вложенной функции).</p>
+                        <p>Необходимо помнить, что объявления переменных «всплывают», но присваивания значений – нет.</p>
+                        <p>Объявление переменной обрабатывается в начале выполнения функции («всплывает»), однако присвоение значения всегда происходит в той строке кода, где оно указано. Т.е. код выполняется по следующему сценарию:</p>
+                        <pre>
+function sayHi() {
+  var phrase; // объявление переменной срабатывает вначале...
+
+  alert(phrase); // undefined
+
+  phrase = "Привет"; // ...присвоение - в момент, когда исполнится данная строка кода.
+}
+
+sayHi();</pre>
+                        <p>Поскольку все объявления переменных <strong>var</strong> обрабатываются в начале функции, мы можем ссылаться на них в любом месте. Однако, переменные имеют значение <strong>undefined</strong> до строки с присвоением значения.</p>
+                        <h4>Имена переменных</h4>
+                        <p>В JavaScript есть два ограничения, касающиеся имён переменных:</p>
+                        <ul>
+                          <li>Имя переменной должно содержать только буквы, цифры или символы <strong>$</strong> и <strong>_</strong>.</li>
+                          <li>Первый символ не должен быть цифрой.</li>
+                        </ul>
+                        <p></p>
+                        <p>Регистр также имеет значение. Переменные с именами <strong>apple</strong> и <strong>APPLE</strong> – это две разные переменные</p>
+                        <p>Также существует <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Lexical_grammar#%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%B2%D1%8B%D0%B5_%D1%81%D0%BB%D0%BE%D0%B2%D0%B0" target="_blank">список зарезервированных слов</a>, которые нельзя использовать в качестве имён переменных, потому что они используются самим языком.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <!-- modal window end -->
               </div>
+              <div class="item"><pre>var a = 1, b = 2, c = a + b; // объявление в одну строку</pre></div>
+              <div class="item">
+                <pre>let z = 'zzz';               // блочная область видимости </pre>
+                <!-- example and info buttons begin -->
+                <div class="buttons">
+                  <button class="btn btn-more" data-bs-toggle="modal" data-bs-target="#letInfoModal" data-toggle="tooltip" title="Больше информации">
+                    <i class="fas fa-question"></i>
+                  </button>
+                </div>
+                <!-- example and info buttons end -->
+                <!-- modal window begin -->
+                <div class="modal fade" id="letInfoModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3>Объявление переменной с помощью "let"</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Ключевое слово <strong>let</strong> используется для создания переменной, значение которой может меняться.</p>
+                        <p>Приведённая ниже инструкция создаёт (другими словами, объявляет) переменную с именем «message»:</p>
+                        <pre>let message;</pre>
+                        <p>Теперь можно поместить в неё данные (другими словами, определить переменную), используя оператор присваивания =:</p>
+                        <pre>let message;
 
+message = 'Hello'; // сохранить строку 'Hello' в переменной с именем message</pre>
+                        <p>Для краткости можно совместить объявление переменной и запись данных в одну строку:</p>
+                        <pre>let message = 'Hello!'; // определяем переменную и присваиваем ей значение
 
+alert(message); // Hello!</pre>
+                        <p>Мы также можем объявить несколько переменных в одной строке:</p>
+                        <pre>let user = 'John', age = 25, message = 'Hello';</pre>
+                        <p>Многострочный вариант немного длиннее, но легче для чтения. Рекомендуется использовать его для лучшей читаемости):</p>
+                        <pre>let user = 'John';
+let age = 25;
+let message = 'Hello';</pre>
+                        <p>Некоторые люди также определяют несколько переменных в таком вот многострочном стиле:</p>
+                        <pre>let user = 'John',
+  age = 25,
+  message = 'Hello';</pre>
+                        <h4>Повторное объявление вызывает ошибку</h4>
+                        <p>Переменная может быть объявлена только один раз.</p>
+                        <p>Повторное объявление той же переменной является ошибкой:</p>
+                        <pre>let message = "Это";
 
+let message = "Другое"; // SyntaxError: 'message' has already been declared</pre>
+                        <h4>Блочная область видимости</h4>
+                        <p>Главное отличие <strong>let</strong> в том, что область видимости переменной ограничивается блоком, а не функцией.</p>
+                        <p>Другими словами, переменная, созданная с помощью оператора <strong>let</strong>, доступна внутри блока, в котором она была создана и в любом вложенном блоке.</p>
+                        <p>Говоря «блок», я имею ввиду всё что вложено между фигурными скобками <strong>{}</strong>, как например в цикле <strong>for</strong> или условии <strong>if</strong>.</p>
+                        <h4>Имена переменных</h4>
+                        <p>В JavaScript есть два ограничения, касающиеся имён переменных:</p>
+                        <ul>
+                          <li>Имя переменной должно содержать только буквы, цифры или символы <strong>$</strong> и <strong>_</strong>.</li>
+                          <li>Первый символ не должен быть цифрой.</li>
+                        </ul>
+                        <p></p>
+                        <p>Регистр также имеет значение. Переменные с именами <strong>apple</strong> и <strong>APPLE</strong> – это две разные переменные</p>
+                        <p>Также существует <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Lexical_grammar#%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%B2%D1%8B%D0%B5_%D1%81%D0%BB%D0%BE%D0%B2%D0%B0" target="_blank">список зарезервированных слов</a>, которые нельзя использовать в качестве имён переменных, потому что они используются самим языком.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal window end -->
+              </div>
+              <div class="item">
+                <pre>const PI = 3.14;             // константа</pre>
+                <!-- example and info buttons begin -->
+                <div class="buttons">
+                  <button class="btn btn-more" data-bs-toggle="modal" data-bs-target="#constInfoModal" data-toggle="tooltip" title="Больше информации">
+                    <i class="fas fa-question"></i>
+                  </button>
+                </div>
+                <!-- example and info buttons end -->
+                <!-- modal window begin -->
+                <div class="modal fade" id="constInfoModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3>Объявление переменной с помощью "const"</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Переменные, объявленные с помощью <strong>const</strong>, называются «константами». Их нельзя изменить. Попытка сделать это приведёт к ошибке:</p>
+                        <h4>Константы в верхнем регистре</h4>
+                        <p>Широко распространена практика использования констант в качестве псевдонимов для трудно запоминаемых значений, которые известны до начала исполнения скрипта.</p>
+                        <p>Названия таких констант пишутся с использованием заглавных букв и подчёркивания.</p>
+                        <pre>const COLOR_RED = "#F00";
+const COLOR_ORANGE = "#FF7F00";
 
-
+// ...когда нам нужно выбрать цвет
+let color = COLOR_ORANGE;
+alert(color); // #FF7F00</pre>
+                        <p>Eсть константы, которые известны до выполнения (например, шестнадцатеричное значение для красного цвета), а есть константы, которые вычисляются во время выполнения сценария, но не изменяются после их первоначального назначения.</p>
+                        <p>Вычисляемые константы прописываются обычными, не прописными буквами.</p>
+                        <p>Другими словами, константы с именами, записанными заглавными буквами, используются только как псевдонимы для «жёстко закодированных» значений.</p>
+                        <h4>Блочная область видимости</h4>
+                        <p>Главное отличие <strong>const</strong> (как и <strong>let</strong>) в том, что область видимости переменной ограничивается блоком, а не функцией.</p>
+                        <p>Другими словами, переменная, созданная с помощью оператора <strong>const</strong>, доступна внутри блока, в котором она была создана и в любом вложенном блоке.</p>
+                        <p>Говоря «блок», я имею ввиду всё что вложено между фигурными скобками <strong>{}</strong>, как например в цикле <strong>for</strong> или условии <strong>if</strong>.</p>
+                        <h4>Имена переменных</h4>
+                        <p>В JavaScript есть два ограничения, касающиеся имён переменных:</p>
+                        <ul>
+                          <li>Имя переменной должно содержать только буквы, цифры или символы <strong>$</strong> и <strong>_</strong>.</li>
+                          <li>Первый символ не должен быть цифрой.</li>
+                        </ul>
+                        <p></p>
+                        <p>Регистр также имеет значение. Переменные с именами <strong>apple</strong> и <strong>APPLE</strong> – это две разные переменные</p>
+                        <p>Также существует <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Lexical_grammar#%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%B2%D1%8B%D0%B5_%D1%81%D0%BB%D0%BE%D0%B2%D0%B0" target="_blank">список зарезервированных слов</a>, которые нельзя использовать в качестве имён переменных, потому что они используются самим языком.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal window end -->
+              </div>
+              <div class="item">
+                <pre>let b = "init";              // строка string</pre>
+              </div>
+              <div class="item">
+                <pre>let c = "Hi" + " " + "Joe";  // = "Hi Joe"</pre>
+              </div>
+              <div class="item">
+                <pre>let d = 1 + 2 + "3";         // = "33"</pre>
+              </div>
+              <div class="item">
+                <pre>let e = [2,3,5,8];           // массив array</pre>
+              </div>
+              <div class="item">
+                <pre>let f = false;               // логический тип boolean</pre>
+              </div>
+              <div class="item">
+                <pre>let g = /()/;                // регулярное выражение RegEx</pre>
+              </div>
+              <div class="item">
+                <pre>let h = function(){};        // функция function object</pre>
+              </div>
+              <div class="item">
+                <pre>let user = new Object();     // синтаксис "конструктор объекта"</pre>
+              </div>
+              <div class="item">
+                <pre>let user = {};               // синтаксис "литерал объекта"</pre>
+              </div>
+              <div class="item">
+                <pre>let inf = Infinity;          // бесконечность ∞</pre>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="data-column">
           <div class="block">
-            <div class="heading">
-              <h2>Title</h2>
-
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseDataTypes">
+              <h2>Типы данных</h2>
             </div>
-            Column 2
-
+            <div class="collapse show" id="collapseDataTypes">
+              <h3>Простые типы</h3>
+              <div class="item">
+                <pre>let age = 18;                           // число number</pre>
+              </div>
+              <div class="item">
+                <pre>let nul = 0xff;                         // 255, "0x" - 16-ричное число</pre>
+              </div>
+              <div class="item">
+                <pre>let nul = 0o377;                        // 255, "0o" - 8-ричное число</pre>
+              </div>
+              <div class="item">
+                <pre>let nul = 0b11111111;                   // 255, "0b" - двоичное число</pre>
+              </div>
+              <div class="item">
+                <pre>let inf = Infinity;                     // бесконечность ∞, number / 0</pre>
+              </div>
+              <div class="item">
+                <pre>let name = "Jane";                      // строка string</pre>
+              </div>
+              <div class="item">
+                <pre>let truth = false;                      // логический тип boolean</pre>
+              </div>
+              <div class="item">
+                <pre>let id = Symbol("id");                  // символ Symbol</pre>
+              </div>
+              <div class="item">
+                <pre>let bigint = BigInt("123456789012345")  // BigInt</pre>
+              </div>
+              <h3>Специальные значения</h3>
+              <div class="item">
+                <pre>let age = null;                         // Null</pre>
+              </div>
+              <div class="item">
+                <pre>let a; typeof a; let age = undefined;   // undefined</pre>
+              </div>
+              <h3>Объекты</h3>
+              <div class="item">
+                <pre>let name = {first:"Jane", last:"Doe"};  // объект object</pre>
+              </div>
+              <div class="item">
+                <pre>let user = new Object();                // конструктор объекта</pre>
+              </div>
+              <h3>Специальные объекты</h3>
+              <div class="item">
+                <pre>let sheets = ["HTML","CSS","JS"];       // массив array</pre>
+              </div>
+              <div class="item">
+                <pre>let now = new Date();                   // объект даты</pre>
+              </div>
+              <div class="item">
+                <pre>let h = function(){};                   // функции function</pre>
+              </div>
+              <div class="item">
+                <pre>let re = /ab+c/;                        // регулярные выражения</pre>
+              </div>
+              <div class="item">
+                <pre>let re = new RegExp("ab+c");            // регулярные выражения</pre>
+              </div>
+              <div class="item">
+                <pre>const x = Error("Error here!");         // объект ошибки</pre>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="data-column">
           <div class="block">
-            Column 3
-
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="block">
-            Column 4
-
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseTypeConversion">
+              <h2>Преобразование типов</h2>
+            </div>
+            <div class="collapse show" id="collapseTypeConversion">
+              <h3>Строковое преобразование</h3>
+              <div class="item">
+                <pre>let value = true; // boolean
+value = String(value); // теперь value это строка "true"</pre>
+              </div>
+              <div class="item">
+                <pre>let value = 123 + '27' // 12327 тут конкатенация строк</pre>
+              </div>
+              <h3>Численное преобразование</h3>
+              <p>Численное преобразование происходит в математических функциях и выражениях (кроме знака конкатенации <strong>+</strong>).</p>
+              <div class="item">
+                <pre>let value = "6" / "2"; // 3, строки преобразуются в числа</pre>
+              </div>
+              <div class="item">
+                <pre>let value = "125" * 2; // 250, строки преобразуются в числа</pre>
+              </div>
+              <p>Мы можем использовать функцию <strong>Number(value)</strong>, чтобы явно преобразовать <strong>value</strong> к числу:</p>
+              <div class="item">
+                <pre>let str = "123"; // string
+let num = Number(str); // становится числом 123</pre>
+              </div>
+              <p>Правила численного преобразования:</p>
+              <table>
+                <tr>
+                  <th>Значение</th>
+                  <th>Преобразуется в</th>
+                </tr>
+                <tr>
+                  <td><strong>undefined</strong></td>
+                  <td><strong>NaN</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>null</strong></td>
+                  <td><strong>0</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>true / false</strong></td>
+                  <td><strong>1 / 0</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>string</strong></td>
+                  <td>Пробельные символы (пробелы, знаки табуляции <strong>\t</strong>, знаки новой строки <strong>\n</strong> и т. п.) по краям обрезаются. Далее, если остаётся пустая строка, то получаем <strong>0</strong>, иначе из непустой строки «считывается» число. При ошибке результат <strong>NaN</strong>.</td>
+                </tr>
+              </table>
+              <p>Примеры:</p>
+              <div class="item">
+                <pre>let value = Number("   123   "); // 123</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Number("123z");      // NaN</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Number(true);        // 1</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Number(false);       // 0</pre>
+              </div>
+              <p class="warning"><strong>undefined</strong> при численном преобразовании становится <strong>NaN</strong>, не <strong>0</strong></p>
+              <h3>Логическое преобразование</h3>
+              <p>Значения, которые интуитивно «пустые», вроде <strong>0</strong>, пустой строки, <strong>null</strong>, <strong>undefined</strong> и <strong>NaN</strong>, становятся <strong>false</strong>.</p>
+              <p>Все остальные значения становятся <strong>true</strong>.</p>
+              <div class="item">
+                <pre>let value = Boolean(1); // true</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Boolean(0); // false</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Boolean("Привет!"); // true</pre>
+              </div>
+              <div class="item">
+                <pre>let value = Boolean(""); // false</pre>
+              </div>
+              <p class="warning"><strong>"0"</strong> и строки из одних пробелов типа <strong>" "</strong> при логическом преобразовании всегда <strong>true</strong>.</p>
+            </div>
           </div>
         </div>
       </div>
