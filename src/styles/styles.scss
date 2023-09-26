@@ -147,15 +147,21 @@ h3 a {
 /* Main content */
 main {
   min-height: 50vh;
-  padding: 40px 40px;
+  padding: 15px 40px 40px;
 }
-.data-row {
+.all-opener-row {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+
+  a {
+    margin: 0 15px 10px;
+  }
 }
-.data-column {
+.grid-item {
   width: 33.333%;
-  padding: 15px;
+  padding: 0 15px;
+  margin-bottom: 35px;
 
   @media only screen and (max-width: 1900px) {
     width: 50%;
@@ -165,7 +171,6 @@ main {
   }
 }
 .block {
-  margin-bottom: 1rem;
   border-top: 2px solid #bbb;
   background-color: #fff;
   border-radius: 10px;
@@ -246,6 +251,12 @@ main {
     font-weight: 700;
     color: #555;
     line-height: 1.2rem;
+    overflow-x: hidden;
+
+    &:hover {
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
   }
 
   h3 {

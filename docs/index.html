@@ -39,8 +39,64 @@
     <!-- header end -->
     <!-- main content begin -->
     <main id="main">
-      <div class="data-row">
-        <div class="data-column">
+
+      <div class="all-opener-row">
+        <a class="btn btn-outline-secondary all-section-open" href="#">Раскрыть все секции</a>
+        <a class="btn btn-outline-secondary all-section-close" href="#">Закрыть все секции</a>
+      </div>
+
+      <div class="data-row grid">
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseBase">
+              <h2>Базовая информация</h2>
+            </div>
+            <div class="collapse show" id="collapseBase">
+              <h3>Скрипт на странице</h3>
+              <div class="item">
+                <pre>&lt;<span>script</span> <span>type</span>=<span>"text/javascript"</span>>  ...
+&lt;/<span>script</span>></pre>
+              </div>
+              <h3>Подключение внешнего js файла</h3>
+              <div class="item">
+                <pre><span>&lt;<span>script</span> <span>src</span>=<span>"filename.js"</span>>&lt;/<span>script</span>></span></pre>
+              </div>
+              <h3>Задержка 1 сек</h3>
+              <div class="item">
+                <pre>setTimeout(function () {
+...
+}, 1000);</pre>
+              </div>
+              <h3>Функции</h3>
+              <div class="item">
+                <pre>function addNumbers(a, b) {
+return a + b; ;
+}
+x = addNumbers(1, 2);</pre>
+              </div>
+              <h3>Редактирование DOM элемента</h3>
+              <div class="item">
+                <pre>document.getElementById("elementID").innerHTML = "Hello World!";</pre>
+              </div>
+              <h3>Вывод информации</h3>
+              <div class="item">
+                <pre>console.log(a);             // вывод в консоль браузера
+document.write(a);          // вывод в HTML
+alert(a);                   // вывод в alert окне
+confirm("Really?");         // yes/no диалог, возвращяет true/false
+prompt("Your age?","0");    // диалог с полем ввода. Второй аргумент - значение по умолчанию</pre>
+              </div>
+              <h3>Комментарии</h3>
+              <div class="item">
+                <pre>/* Multi line
+comment */
+// One line</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseVariables">
               <h2>Переменные</h2>
@@ -284,10 +340,29 @@ alert(color); // #FF7F00</pre>
               <div class="item">
                 <pre>let inf = Infinity;          // бесконечность ∞</pre>
               </div>
+              <h3>Строгий режим</h3>
+              <div class="item">
+                <pre>"use strict";   // включает строгий режим для написания безопасного кода
+x = 1;          // будет ошибка - переменная не была объявлена</pre>
+              </div>
+              <h3>Значения</h3>
+              <div class="item">
+                <pre>false, true                     // логические boolean</pre>
+              </div>
+              <div class="item">
+                <pre>18, 3.14, 0b10011, 0xF6, NaN    // числа number</pre>
+              </div>
+              <div class="item">
+                <pre>"flower", 'John'                // строки string</pre>
+              </div>
+              <div class="item">
+                <pre>undefined, null , Infinity      // специальные special</pre>
+              </div>
             </div>
           </div>
         </div>
-        <div class="data-column">
+
+        <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseDataTypes">
               <h2>Типы данных</h2>
@@ -357,7 +432,8 @@ alert(color); // #FF7F00</pre>
             </div>
           </div>
         </div>
-        <div class="data-column">
+
+        <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseTypeConversion">
               <h2>Преобразование типов</h2>
@@ -440,7 +516,177 @@ let num = Number(str); // становится числом 123</pre>
             </div>
           </div>
         </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseOperators">
+              <h2>Операторы</h2>
+            </div>
+            <div class="collapse show" id="collapseOperators">
+              <h3>Операторы присваивания</h3>
+              <div class="item">
+                <pre>x = y      // x = y -> присваивание
+x += y     // x = x + y -> присваивание со сложением
+x -= y     // x = x - y -> присваивание с вычитанием
+x *= y     // x = x * y -> присваивание с умножением
+x /= y     // x = x / y -> присваивание с делением
+x %= y     // x = x % y -> присваивание по модулю
+x <<= y    // x = x << y -> присваивание с левым сдвигом
+x >>= y    // x = x >> y -> присваивание с правым сдвигом
+x >>>= y   // x = x >>> y -> присваивание с беззнаковым сдвигом вправо
+x &= y     // x = x & y -> присваивание с побитовым AND
+x ^= y     // x = x ^ y -> присваивание с побитовым XOR
+x |= y     // x = x | y -> присваивание с побитовым OR</pre>
+              </div>
+              <h3>Деструктуризация</h3>
+              <p>Деструктуризации - это выражение, которое позволяет извлекать данные из массивов или объектов, используя синтаксис, который зеркалирует конструкторы массивов и литералы объектов.</p>
+              <div class="item">
+                <pre>var foo = ["one", "two", "three"];
+// без деструктуризации
+var one = foo[0];
+var two = foo[1];
+var three = foo[2];
+// с деструктуризацией
+var [one, two, three] = foo;</pre>
+              </div>
+              <h3>Операторы сравнения</h3>
+              <p>Операнды могут быть числами, строками, логическими величинами или объектами. Строки сравниваются на основании стандартного лексикографического порядка, используя Unicode-значения</p>
+              <div class="item">
+                <pre>a == b     // true, если операторы равны
+a == b     // true, если операторы равны
+a != b     // true, если операторы не равны
+a === b    // true, если операторы равны и одинаковый тип
+a !== b    // true, если операторы не равны и/или разный тип
+a > b      // true, если оператор слева больше
+a >= b     // true, если оператор слева больше или равен
+a < b      // true, если оператор слева меньше
+a <= b     // true, если оператор слева меньше или равен</pre>
+              </div>
+              <h3>Арифметические операторы</h3>
+              <div class="item">
+                <pre>12 % 5    // 2 -> остаток от деления
+i++       // инкремент (i = i + 1)
+i--       // декремент (i = i - 1)
+-i        // унарный минус, отрицат значение i
++i        // унарный плюс - приводит i к числу
+i ** c    // возводит i в степень c</pre>
+              </div>
+              <h3>Логические операторы</h3>
+              <p>Логическое И - возвращает операнд expr1, если он может быть преобразован в false; в противном случае возвращает операнд expr2. Таким образом, при использовании булевых величин в качестве операндов, оператор && возвращает true, если оба операнда true; в противном случае возвращает false.</p>
+              <div class="item">
+                <pre>expr1 && expr2</pre>
+              </div>
+              <p>Логическое ИЛИ - возвращает операнд expr1, если он может быть преобразован в true; в противном случае возвращает операнд expr2. Таким образом, при использовании булевых величин в качестве операндов, оператор || возвращает true, если один из операндов true; если же оба false, то возвращает false.</p>
+              <div class="item">
+                <pre>expr1 || expr2</pre>
+              </div>
+              <p>Логическое НЕ - возвращает false, если операнд может быть преобразован в true; в противном случае возвращает true.</p>
+              <div class="item">
+                <pre>!expr</pre>
+              </div>
+              <h3>Строковые операторы</h3>
+              <div class="item">
+                <pre>console.log("my " + "string"); // "my string"</pre>
+              </div>
+              <div class="item">
+                <pre>var mystring = "alpha";
+mystring += "bet"; // mystring присваивается "alphabet"</pre>
+              </div>
+              <h3>Условный (тернарный) оператор</h3>
+              <div class="item">
+                <pre>condition ? val1 : val2</pre>
+              </div>
+              <h3>Унарнывй оператор delete</h3>
+              <p>Оператор <strong>delete</strong> выполняет удаление объекта, свойства объекта, или элемента массива с заданным индексом. После применения оператора <strong>delete</strong> свойство элемента меняется на <strong>undefined</strong>. Оператор <strong>delete</strong> возвращает <strong>true</strong> если выполнение операции возможно; оператор возвращает <strong>false</strong>, если выполнение операции невозможно.</p>
+              <div class="item">
+                <pre>delete objectName;
+delete objectName.property;
+delete objectName[index];
+delete property; // допустимо только внутри with</pre>
+              </div>
+              <p>где <strong>objectName</strong> представляет собой имя объекта, <strong>property</strong> - свойство объекта, а <strong>index</strong> - целое число, указывающее на положение (номер позиции) элемента в массиве.</p>
+              <h3>Оператор typeof</h3>
+              <p>Оператор <strong>typeof</strong> возвращает строку обозначающую тип невычисленного операнда. Значение <strong>operand</strong> может быть строкой, переменной, дескриптором, или объектом, тип которого следует определить. Скобки вокруг операнда необязательны.</p>
+              <div class="item">
+                <pre>typeof operand
+typeof (operand)</pre>
+              </div>
+              <div class="item">
+                <pre>var today = new Date();
+typeof today; // возвращает "object"
+                </pre>
+              </div>
+              <div class="item">
+                <pre>typeof null; // возвращает "object"
+                </pre>
+              </div>
+              <div class="item">
+                <pre>// Методы и функции
+typeof blur; // возвращает "function"
+typeof eval; // возвращает "function"
+typeof parseInt; // возвращает "function"
+typeof shape.split; // возвращает "function"</pre>
+              </div>
+              <div class="item">
+                <pre>// Встроенные объекты
+typeof Date; // возвращает "function"
+typeof Function; // возвращает "function"
+typeof Math; // возвращает "object"
+typeof Option; // возвращает "function"
+typeof String; // возвращает "function"</pre>
+              </div>
+              <h3>Оператор void</h3>
+              <p>Оператор <strong>void</strong> определяет выражение, которое должно быть вычислено без возвращения результата. <strong>expression</strong> - это выражение JavaScript, требующее вычисления. Скобки вокруг выражения необязательны, но их использование является правилом хорошего тона.</p>
+              <div class="item">
+                <pre>void (expression)
+void expression</pre>
+              </div>
+              <h3>Оператор отношения in</h3>
+              <p>Возвращает true, если указанный объект имеет указанное свойство</p>
+              <div class="item">
+                <pre>propNameOrNumber in objectName</pre>
+              </div>
+              <p>где <strong>propNameOrNumber</strong> - строка или числовое выражение, представляющее имя свойства или индекс массива, а <strong>objectName</strong> - имя объекта.</p>
+              <h3>Оператор instanceof</h3>
+              <p>Возвращает true, если заданный объект является объектом указанного типа</p>
+              <div class="item">
+                <pre>objectName instanceof objectType</pre>
+              </div>
+              <p>где <strong>objectName</strong> - имя объекта, тип которого необходимо сравнить с <strong>objectType</strong>, а <strong>objectType</strong> - тип объекта, например, <strong>Date</strong> или <strong>Array</strong>.</p>
+              <h3>Оператор this</h3>
+              <p>В общем случае this указывает на вызываемый объект, которому принадлежит данный метод.</p>
+              <div class="item">
+                <pre>this["propertyName"]
+this.propertyName</pre>
+              </div>
+              <h3>Оператор new</h3>
+              <p>Используется для создания экземпляра объекта пользовательского типа или одного из встроенных объектов.</p>
+              <div class="item">
+                <pre>var objectName = new objectType([param1, param2, ..., paramN]);</pre>
+              </div>
+              <h3>Ключевое слово super</h3>
+              <p>Используется, чтобы вызывать функции родительского объекта. Это полезно и с классами для вызова конструктора родителя</p>
+              <div class="item">
+                <pre>super([arguments]); // вызывает конструктор родителя. super.functionOnParent([arguments]);</pre>
+              </div>
+              <h3>Spread оператор (расширения)</h3>
+              <p>позволяет выражению расширяться в местах с множеством аргументов (для вызовов функций) или множестве элементов (для массивов)</p>
+              <div class="item">
+                <pre>var parts = ["shoulder", "knees"];
+var lyrics = ["head", ...parts, "and", "toes"];</pre>
+              </div>
+              <div class="item">
+                <pre>function f(x, y, z) {}
+var args = [0, 1, 2];
+f(...args);</pre>
+              </div>
+              <p>Приоритет операторов: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table</p>
+            </div>
+          </div>
+        </div>
+
       </div>
+
 
 
 
@@ -461,7 +707,8 @@ let num = Number(str); // становится числом 123</pre>
     </footer>
     <!-- footer end -->
   <!-- js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
