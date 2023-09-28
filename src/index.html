@@ -680,11 +680,242 @@ var lyrics = ["head", ...parts, "and", "toes"];</pre>
 var args = [0, 1, 2];
 f(...args);</pre>
               </div>
-              <p>Приоритет операторов: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table</p>
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table">Приоритет операторов</a></p>
             </div>
           </div>
         </div>
 
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseString">
+              <h2>Строки</h2>
+            </div>
+            <div class="collapse show" id="collapseString">
+              <div class="item">
+                <pre>let single = 'single-quoted';
+let double = "double-quoted";</pre>
+              </div>
+              <p>Eсли использовать обратные кавычки, то в такую строку мы сможем вставлять произвольные выражения, обернув их в <strong>${…}</strong></p>
+              <div class="item">
+                <pre>alert(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3</pre>
+              </div>
+              <div class="item">
+                <pre>var esc = 'I don\'t \n know';   // \n перенос строки
+var len = abc.length;           // длина строки</pre>
+              </div>
+              <p>Метод <strong>includes()</strong> определяет, содержит ли массив определённый элемент, возвращая в зависимости от этого <strong>true</strong> или <strong>false</strong>.</p>
+              <div class="item">
+                <pre>[1, 2, 3].includes(2) // true
+['cat', 'dog'].includes(('at')) // false</pre>
+              </div>
+              <p>Метод <strong>str.startsWith(searchString[, position])</strong> помогает определить, начинается ли строка с символов указанных в скобках, возвращая, соответственно, <strong>true</strong> или <strong>false</strong>.</p>
+              <div class="item">
+                <pre>var str = "Быть или не быть...";
+str.startsWith("Быть");      // true
+str.startsWith("не быть");   // false
+str.startsWith("не быть", 9) // true</pre>
+              </div>
+              <p>Метод <strong>str.endsWith(searchString[, length])</strong> позволяет определить, заканчивается ли строка символами указанными в скобках, возвращая, соответственно, <strong>true</strong> или <strong>false</strong>. <br><strong>length</strong> - необязательный параметр. Позволяет искать внутри строки, обрезая её по диапазону; по умолчанию равен длине строки.</p>
+              <div class="item">
+                <pre>var str = "Быть или не быть, вот в чём вопрос.";
+str.endsWith("вопрос.");  // true
+str.endsWith("быть");     // false
+str.endsWith("быть", 16); // true</pre>
+              </div>
+              <p>Метод <strong>trim()</strong> удаляет пробельные символы с начала и конца строки</p>
+              <div class="item">
+                <pre>'   foo  '.trim()  // 'foo'</pre>
+              </div>
+              <p>Метод <strong>repeat()</strong> конструирует и возвращает новую строку, содержащую указанное количество соединённых вместе копий строки, на которой он был вызван.</p>
+              <div class="item">
+                <pre>'абв'.repeat(-1);  // RangeError
+'абв'.repeat(0);   // ''
+'абв'.repeat(1);   // 'абв'
+'абв'.repeat(2);   // 'абвабв'
+'абв'.repeat(3.5); // 'абвабвабв' - 3.5 будет преобразовано в целое число</pre>
+              </div>
+              <h3>Нахождение подстроки str.indexOf(substr, pos)</h3>
+              <p>Ищет подстроку <strong>substr</strong> в строке <strong>str</strong>, начиная с позиции <strong>pos</strong> (необязательный параметр), и возвращает позицию, на которой располагается совпадение, либо -1 при отсутствии совпадений</p>
+              <div class="item">
+                <pre>let str = 'Widget with id';
+
+alert( str.indexOf('Widget') ); // 0, подстрока 'Widget' найдена в начале
+alert( str.indexOf('widget') ); // -1, совпадений нет, чувствителен к регистру
+
+alert( str.indexOf("id") ); // 1, подстрока "id" найдена на позиции 1</pre>
+              </div>
+              <div class="item">
+                <pre>let str = 'Widget with id';
+
+alert( str.indexOf('id', 2) ) // 12, т.к. поиск со 2 позиции</pre>
+              </div>
+              <p>Чтобы найти все вхождения подстроки, нужно запустить <strong>indexOf</strong> в цикле. Каждый раз, получив очередную позицию, начинаем новый поиск со следующей</p>
+              <div class="item">
+                <pre>let str = "Ослик Иа-Иа";
+let target = "Иа";
+
+let pos = -1;
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}</pre>
+              </div>
+              <p>Также есть похожий метод <strong>str.lastIndexOf(substr, position)</strong>, который ищет с конца строки к её началу.<br>Он используется тогда, когда нужно получить самое последнее вхождение: перед концом строки или начинающееся до (включительно) определённой позиции.</p>
+              <div class="item">
+                <pre>abc.lastIndexOf("lmno");</pre>
+              </div>
+              <h3>Получение подстроки</h3>
+              <p><strong>str.slice(start [, end])</strong> - возвращает часть строки от <strong>start</strong> до (не включая) <strong>end</strong>.</p>
+              <div class="item">
+                <pre>let str = "stringify";
+str.slice(0, 5)   // 'strin', символы от 0 до 5 (не включая 5)
+str.slice(0, 1)   // 's', от 0 до 1, не включая 1</pre>
+              </div>
+              <p>Если аргумент <strong>end</strong> отсутствует, <strong>slice</strong> возвращает символы до конца строки</p>
+              <div class="item">
+                <pre>let str = "stringify";
+alert( str.slice(2) ); // 'ringify', с позиции 2 и до конца</pre>
+              </div>
+              <p>Также для start/end можно задавать отрицательные значения. Это означает, что позиция определена как заданное количество символов с конца строки</p>
+              <div class="item">
+                <pre>let str = "stringify";
+// начинаем с позиции 4 справа, а заканчиваем на позиции 1 справа
+alert( str.slice(-4, -1) ); // 'gif'</pre>
+              </div>
+              <p><strong>str.substring(start [, end])</strong> - возвращает часть строки между <strong>start</strong> и <strong>end</strong> (не включая) <strong>end</strong>. <br>можно задавать <strong>start</strong> больше <strong>end</strong>. <br>Если <strong>start</strong> больше <strong>end</strong>, то метод <strong>substring</strong> сработает так, как если бы аргументы были поменяны местами. <br>Отрицательные значения <strong>substring</strong>, в отличие от <strong>slice</strong>, не поддерживает, они интерпретируются как <strong>0</strong></p>
+              <div class="item">
+                <pre>let str = "stringify";
+// для substring эти два примера — одинаковы
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"</pre>
+              </div>
+              <p><strong>str.substr(start [, length])</strong> - возвращает часть строки от <strong>start</strong> длины <strong>length</strong></p>
+              <div class="item">
+                <pre>let str = "stringify";
+// 'ring', получаем 4 символа, начиная с позиции 2
+alert( str.substr(2, 4) );</pre>
+              </div>
+              <p>Значение первого аргумента может быть отрицательным, тогда позиция определяется с конца</p>
+              <div class="item">
+                <pre>let str = "stringify";
+// 'gi', получаем 2 символа, начиная с позиции 4 с конца строки
+alert( str.substr(-4, 2) );</pre>
+              </div>
+              <p>Метод <strong>replace()</strong> выполняет внутри строки поиск с использованием регулярного выражения (объект <strong>RegExp</strong>), или строкового значения и возвращает новую строку, в которой будут заменены найденные значения.</p>
+              <div class="item">
+                <pre>'11-31-56'.replace("-", ":");  // '11:31:56'</pre>
+              </div>
+              <p>Когда первый аргумент метода <strong>replace</strong> является строкой, он заменяет только первое совпадение!<br>Чтобы заменить все вхождения, нужно воспользоваться флагом <strong>g</strong> (eсли у регулярного выражения есть флаг <strong>g</strong>, то он возвращает массив всех совпадений, флаг <strong>i</strong> делает регулярное выражение регистронезависимым).</p>
+              <div class="item">
+                <pre>'11-31-56'.replace( /-/g, ":" );             // '11:31:56'
+'Как твои дела?'.replace(/твои/gi, 'ваши');  // 'Как ваши дела?'
+'Привет Пока'..replace(/(\w+)\s(\w+)/, '$2 $1'); // 'Пока Привет'</pre>
+              </div>
+              <div class="item">
+                <pre>abc.toUpperCase();              // к верхнему регистру
+abc.toLowerCase();              // к нижнему регистру
+abc.concat(" ", str2);          // abc + " " + str2</pre>
+              </div>
+              <p>Метод <strong>charAt(index)</strong> возвращает указанный символ из строки. <strong>index</strong> - целое число от 0 до длины строки минус 1</p>
+              <div class="item">
+                <pre>'abcd'.charAt(2);               // 'c'</pre>
+              </div>
+              <p>Для получения символа используем <strong>[]</strong> или метод <strong>at</strong></p>
+              <div class="item">
+                <pre>'abcd'[2];                      // 'c'
+'abcd'.at(1);                   // 'b'</pre>
+              </div>
+              <p>Метод <strong>charCodeAt()</strong> возвращает числовое значение Юникода для символа по указанному индексу</p>
+              <div class="item">
+                <pre>'abcd'.charCodeAt(2);            // "c" -> 99</pre>
+              </div>
+              <p>Метод <strong>split</strong> разбивает строки в массив по указанному в первом параметре разделителю. Если он не задан - вернется вся строка. Если он задан как пустые кавычки, то каждый символ строки попадет в отдельный элемент массива. Вторым необязательным параметром можно указать максимальное количество элементов в получившемся массиве.</p>
+              <div class="item">
+                <pre>'abcd'.split(",");                 // ['abcd']
+'abcd'.split("");                  // ['a', 'b', 'c', 'd']
+'ab-cd-ef'.split('-');             // ['ab', 'cd', 'ef']
+'ab-cd-ef'.split('-', 2);          // ['ab', 'cd']</pre>
+              </div>
+              <p>Метод <strong>numObj.toString([radix])</strong> возвращает строковое представление указанного объекта <strong>Number</strong>. radix - необязательный параметр, целое число между 2 и 36, определяющее основание системы счисления, используемой для представления числового значения.</p>
+              <div class="item">
+                <pre>(6).toString(2)); // Выведет '110'
+(254).toString(16); // Выведет 'fe'</pre>
+              </div>
+              <h3>JSON.stringify(obj)</h3>
+              <p>Обычно <strong>JSON</strong> используется для обмена данными с сервером.<br>
+                При отправке на сервер данные всегда передаются в виде строки.<br>
+                Чтобы преобразовать объект JavaScript в строку, используется функция <strong>JSON.stringify()</strong>.</p>
+              <div class="item">
+                <pre>JSON.stringify({ "name":"John", "age":30}) // '{"name":"John","age":30}'</pre>
+              </div>
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String">Все методы работы со строками</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseOperators">
+              <h2>Циклы</h2>
+            </div>
+            <div class="collapse show" id="collapseOperators">
+              <h3>Цикл For</h3>
+              <div class="item">
+                <pre>for (let i = 0; i < 3; i++) {
+  alert(i); // выведет 0, затем 1, затем 2
+}</pre>
+              </div>
+              <div class="item">
+                <pre>var sum = 0;
+for (var i = 0; i < a.length; i++) {
+  sum + = a[i];
+}               // парсинг (разбор) массива</pre>
+              </div>
+              <p>Любая часть <strong>for</strong> может быть пропущена</p>
+              <p>Оператор <strong>for...of</strong> выполняет цикл обхода итерируемых объектов (включая <strong>Array</strong>, <strong>Map</strong>, <strong>Set</strong>, объект аргументов и подобных), вызывая на каждом шаге итерации операторы для каждого значения из различных свойств объекта.</p>
+              <div class="item">
+                <pre>let iterable = [10, 20, 30];
+
+for (let value of iterable) {
+  value += 1;
+  console.log(value);  // выведет 10, затем 20, затем 30
+}</pre>
+              </div>
+              <h3>Цикл While</h3>
+              <div class="item">
+                <pre>let i = 0;
+
+while (i < 3) { // выводит 0, затем 1, затем 2
+  alert( i );
+  i++;
+}</pre>
+              </div>
+              <h3>Цикл «do…while»</h3>
+              <div class="item">
+                <pre>let i = 0;
+
+do {
+  alert( i ); // выведет 0, затем 1, затем 2
+  i++;
+} while (i < 3);</pre>
+              </div>
+              <h3>Прерывание цикла: «break»</h3>
+              <div class="item">
+                <pre>for (var i = 0; i < 10; i++) {
+if (i == 5) { break; }          // стоп и выход из цикла
+document.write(i + ", ");       // последнее выведенное число - 4
+}</pre>
+              </div>
+              <h3>Переход к следующей итерации: «continue»</h3>
+              <div class="item">
+                <pre>for (var i = 0; i < 10; i++) {
+if (i == 5) { continue; }       // пропуск остальных операторов итерации
+document.write(i + ", ");       // пропустит 5
+}</pre>
+              </div>
+              <p>Нельзя использовать <strong>break/continue</strong> справа от оператора <strong>?</strong></p>
+            </div>
+          </div>
+        </div>
       </div>
 
 
