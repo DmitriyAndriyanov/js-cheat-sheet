@@ -23,14 +23,27 @@
       <button class="btn-menu"></button>
       <nav>
         <ul>
-          <li><a href="https://learn.javascript.ru/" target="_blank">Учебник</a></li>
-          <li><a href="http://jsbin.com/?html,css,js,console,output" target="_blank">Редактор</a></li>
+          <li><a target="_blank" href="https://learn.javascript.ru/" target="_blank">Учебник</a></li>
+          <li><a target="_blank" href="http://jsbin.com/?html,css,js,console,output" target="_blank">Редактор</a></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Webpack</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Webpack сборка 2023</a></li>
-              <li><a class="dropdown-item" href="#">Webpack сайт</a></li>
-              <li><a class="dropdown-item" href="#">Webpack конспект</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://github.com/vladilenm/webpack-2020">Webpack сборка 2020</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://webpack.js.org/">Webpack сайт</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://my-js.org/docs/cheatsheet/webpack/">Webpack шпаргалка</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Полезное</a>
+            <ul class="dropdown-menu">
+              <li><a target="_blank" class="dropdown-item" href="https://html-cleaner.com/js/">JS cleaner</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://javascriptobfuscator.com/Javascript-Obfuscator.aspx">Obfuscator</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://caniuse.com/">Can I use?</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://nodejs.org/ru">Node.js</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://jquery.com/">jQuery website</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://htmlcheatsheet.com/jquery/">jQuery CheatSheet</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://www.regexpal.com/">RegEx tester</a></li>
+              <li><a target="_blank" class="dropdown-item" href="https://html-css-js.com/js/compressor/">JS compressor</a></li>
             </ul>
           </li>
         </ul>
@@ -46,6 +59,7 @@
       </div>
 
       <div class="data-row grid">
+
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseBase">
@@ -523,6 +537,8 @@ let num = Number(str); // становится числом 123</pre>
               <h2>Операторы</h2>
             </div>
             <div class="collapse show" id="collapseOperators">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_operators">Документация</a></p>
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table">Приоритет операторов</a></p>
               <h3>Операторы присваивания</h3>
               <div class="item">
                 <pre>x = y      // x = y -> присваивание
@@ -680,7 +696,6 @@ var lyrics = ["head", ...parts, "and", "toes"];</pre>
 var args = [0, 1, 2];
 f(...args);</pre>
               </div>
-              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table">Приоритет операторов</a></p>
             </div>
           </div>
         </div>
@@ -691,6 +706,7 @@ f(...args);</pre>
               <h2>Строки</h2>
             </div>
             <div class="collapse show" id="collapseString">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String">Все методы работы со строками</a></p>
               <div class="item">
                 <pre>let single = 'single-quoted';
 let double = "double-quoted";</pre>
@@ -847,17 +863,16 @@ abc.concat(" ", str2);          // abc + " " + str2</pre>
               <div class="item">
                 <pre>JSON.stringify({ "name":"John", "age":30}) // '{"name":"John","age":30}'</pre>
               </div>
-              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String">Все методы работы со строками</a></p>
             </div>
           </div>
         </div>
 
         <div class="grid-item">
           <div class="block">
-            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseOperators">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseLoops">
               <h2>Циклы</h2>
             </div>
-            <div class="collapse show" id="collapseOperators">
+            <div class="collapse show" id="collapseLoops">
               <h3>Цикл For</h3>
               <div class="item">
                 <pre>for (let i = 0; i < 3; i++) {
@@ -916,13 +931,801 @@ document.write(i + ", ");       // пропустит 5
             </div>
           </div>
         </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseIf">
+              <h2>Условное ветвление: if, '?'</h2>
+            </div>
+            <div class="collapse show" id="collapseIf">
+              <h3>If else</h3>
+              <div class="item">
+                <pre>
+if ((age >= 14) && (age < 70)) { // логическое условие
+ status = 1;                      // выполнено если условие true
+} else if (age > 60) {           // else if блок (опционально)
+ status = 2;                      // выполнено если условие false
+} else {                         // else if блок (опционально)
+ status = 3;
+}</pre>
+              </div>
+              <h3>Тернарный оператор '?'</h3>
+              <div class="item">
+                <pre>let accessAllowed = (age > 18) ? true : false;</pre>
+              </div>
+              <div class="item">
+                <pre>let message = (age < 3) ? 'Здравствуй, малыш!' :
+  (age < 18) ? 'Привет!' :
+  (age < 100) ? 'Здравствуйте!' :
+  'Какой необычный возраст!';</pre>
+              </div>
+              <h3>Конструкция 'switch'</h3>
+              <div class="item">
+                <pre>let a = 2 + 2;
+
+switch (a) {
+  case 3:
+    alert( 'Маловато' );
+    break;
+  case 4:
+    alert( 'В точку!' );
+    break;
+  case 5:
+    alert( 'Перебор' );
+    break;
+  default:
+    alert( "Нет таких значений" );
+}</pre>
+              </div>
+              <p>Если <strong>break</strong> нет, то выполнение пойдёт ниже по следующим <strong>case</strong>, при этом остальные проверки игнорируются.</p>
+              <div class="item">
+                <pre>let a = 2 + 2;
+
+switch (a) {
+  case 3:
+    alert( 'Маловато' );  // не выполнится
+  case 4:
+    alert( 'В точку!' );  // выполнится
+  case 5:
+    alert( 'Перебор' );   // выполнится
+  default:
+    alert( "Нет таких значений" ); // выполнится
+}</pre>
+              </div>
+              <p>Несколько вариантов <strong>case</strong>, использующих один код, можно группировать.</p>
+              <div class="item">
+                <pre>switch (a) {
+  case 4:
+    alert('Правильно!');
+    break;
+
+  case 3: // (*) группируем оба case
+  case 5:
+    alert('Неправильно!');
+    alert("Может вам посетить урок математики?");
+    break;
+
+  default:
+    alert('Результат выглядит странновато. Честно.');
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseArrays">
+              <h2>Массивы</h2>
+            </div>
+            <div class="collapse show" id="collapseArrays">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array">Документация</a></p>
+              <div class="item">
+                <pre>var dogs = ["Bulldog", "Beagle", "Labrador"];
+var dogs = new Array("Bulldog", "Beagle", "Labrador");
+
+alert(dogs[1]);             // доступ по индексу, начиная с 0
+dogs[0] = "Bull Terier";    // изменить первый элемент
+
+for (var i = 0; i < dogs.length; i++) { // разбор массива с помощью array.length
+  console.log(dogs[i]);
+}</pre>
+              </div>
+              <h3>Методы массива</h3>
+              <div class="item">
+                <pre>["apple", "banana", "pear"].at(1) // 'banana' -элемент массива с данным индексом</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/at" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>let animals = dogs.concat(cats);  // объединить два массива - ['dog', 'cat']</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[12, 54, 18, 130, 44].every((elem) => elem >= 10);  // true- все элементы >= 10</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/every" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4].fill(0, 2, 4)  // [1, 2, 0, 0] - заполняет значением 0 с позиции 2 по 4</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['spray','destruction'].filter((word) => word.length > 6) // ['destruction']</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['spray','destruction'].find((value, index)=>{ return value.length>5; }); // 'destruction'</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/find" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3].findLast( val => val > 0); // 3 - поиск с конца массива</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, -2, 3, -4].findIndex( val => val == 3 ); // 2 - значение индекса м числом 3</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[-12, -13, 14, 15].findLastIndex( val => val > 0 ); // 3 - индекс, поиск с конца</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, [3, 4]].flat();  // [1, 2, 3, 4] - элементы рекурсивно "подняты"</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4].map((num) => [num * 2]);  // [[2], [4], [6], [8]] новый массив с результатом</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4].flatMap((num) => [num * 2]);  // [2, 4, 6, 8] новый массив с плоской структурой</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['a', 'b', 'c'].forEach((el) => console.log(el));  // 'a' затем 'b' затем 'c'</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>Array.from('foo');  // ['f', 'o', 'o'] массив из arrayLike объекта
+Array.from([1, 2, 3], (x) => x + x)  // [2, 4, 6]</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>Array.fromAsync(asyncIterable).then((array) => console.log(array));  // новый массив из асинхронного итерируемого , итерируемого или массивоподобного объекта</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3].includes(2);  // true - массив содержит 2</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[2, 5, 9].indexOf(9, 2);  // 2 - индекс значения 9, поиск с индекса 2</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>Array.isArray([1]);  // true - объект является массивом</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['Fire', 'Air', 'Water'].join('-');  // 'Fire-Air-Water' - объединяет элементы в строку</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>let arr = ['a', 'b'];
+let iterator = arr.keys();  // возвращает новый итератор массива Array Iterator, содержащий ключи каждого индекса в массиве
+
+console.log(iterator.next()); // { value: 0, done: false }
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/keys" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['Dodo', 'Tiger', 'Dodo'].lastIndexOf('Dodo');  // 3 последний индекс c таким значением</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>Array.of(1, 2, 3);  // [1, 2, 3] новый массив</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/of" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['a', 'b', 'c'].pop();  // 'c' - удаляет последний элемент, возвращает его значение</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['a', 'b'].push('c', 'd');  // 4 - добавит элементы в конец массива, вернёт длину</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/push" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>let initialValue = 0;
+[1, 2, 3, 4].reduce((accum, currVal) => accum + currVal, initialValue);  // 10</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4].reduceRight((accum, currVal) => accum - currVal);  // -2, справо налево 4-3-2-1 = -2</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['one', 'two', 'three'].reverse();  // ['three', 'two', 'one'] - изменяет сам массив</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3].toReversed();  // [3, 2, 1] - новый массив с элементами в обратном порядке</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['one', 'two', 'three'].shift();  // 'one' - удаляет первый элемент, возвращает его значение</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['a', 'b', 'c', 'd', 'e'].slice(2, 4);  // ['c', 'd'] - новый массив из части исходного arr.slice([begin[, end]])</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4, 5].some(element => element % 2 === 0);  // true - хотя бы один элемент удовлетворяет условию</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/some" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['арбузы', 'бананы', 'Вишня'].sort();  // ['Вишня', 'арбузы', 'бананы'] - сортировка на основе Unicode</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['Mar', 'Jan', 'Feb', 'Dec'].toSorted();  // ['Dec', 'Feb', 'Jan', 'Mar'] - новый отсортированный массив</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['angel', 'clown', 'drum', 'sturgeon'].splice(2, 1, 'trumpet'); // удаляет 1 элемент по индексу 2 и вставляет "trumpet", возвращает удаленное значение</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>['Jan', 'Mar', 'Apr', 'May'].toSpliced(1, 0, 'Feb');  // ['Jan', 'Feb', 'Mar', 'Apr', 'May'] - новый массив</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>let date = new Date();
+[1337, date, 'foo'].toLocaleString(); // '1 337,04.10.2023, 01:14:28,foo' - строковое представление элементов, для каждого срабатывает свой toLocaleString</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+
+
+
+
+
+
+
+              <div class="item">
+                <pre></pre>
+                <div class="buttons">
+                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+
+
+
+              <div class="item">
+                <pre></pre>
+                <div class="buttons">
+                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+
+
+
+              <div class="item">
+                <pre>let arr = ["a", "b"];
+let eArr = arr.entries();
+
+console.log(eArr.next().value); // [0, 'a']
+console.log(eArr.next().value); // [1, 'b']</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/entries" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="item">
+                <pre>[1, 2, 3, 4, 5].copyWithin(0, 3, 4); // [4, 2, 3, 4, 5]</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseMath">
+              <h2>Числа и математические функции</h2>
+            </div>
+            <div class="collapse show" id="collapseMath">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math">Все свойства и методы</a></p>
+              <div class="item">
+                <pre>let pi = 3.141;
+pi.toFixed(0);           // вернет 3, параметр - знаки после запятой
+pi.toFixed(2);           // вернет 3.14 (для работы с валютой)
+pi.toPrecision(2)        // вернет 3.1
+pi.valueOf();            // возвращает примитивное значение объекта
+Number(true);            // конвертирует в число - 1
+Number(new Date())       // количество миллисекунд начиная с 1970 года
+parseInt("3 months");    // 3 - первый аргумент в строку, затем в число или NAN
+parseFloat("3.5 days");  // 3.5 - в строку, затем в число с запятой
+Number.MAX_VALUE         // наибольшее возможное JS число
+Number.MIN_VALUE         // наименьшее возможное JS число (5e-324)
+Number.NEGATIVE_INFINITY // -Infinity
+Number.POSITIVE_INFINITY // Infinity</pre>
+              </div>
+              <h3>Math ∑</h3>
+              <div class="item">
+                <pre>let pi = Math.PI;      // 3.141592653589793
+Math.round(4.4);        // = 4 - округление
+Math.round(4.5);        // = 5 - округление
+Math.pow(2,8);          // = 256 - 2 в степени 8
+Math.sqrt(49);          // = 7 - корень квадратный
+Math.abs(-3.14);        // = 3.14 - absolute, положительное число
+Math.ceil(3.14);        // = 4 - округление вверх
+Math.floor(3.99);       // = 3 - округление вниз
+Math.sin(0);            // = 0 - синус
+Math.cos(Math.PI);      // также: tan,atan,asin,acos,
+Math.min(0, 3, -2, 2);  // = -2 - самое меньшее знаяение
+Math.max(0, 3, -2, 2);  // = 3 - самое большое значение
+Math.log(1);            // = 0 натуральный логарифм
+Math.exp(1);            // = 2.7182 (экспонента) в степени x
+Math.random();          // случайное число от 0 до 1
+Math.floor(Math.random() * 5) + 1;  // случайное целое от 1 до 5</pre>
+              </div>
+              <h3>Математические канстанты</h3>
+              <div class="item">
+                <pre>Math.E          // 2.718281828459045
+Math.PI         // 3.141592653589793
+Math.SQRT2      // 1.4142135623730951
+Math.SQRT1_2    // 0.7071067811865476
+Math.LN2        // 0.6931471805599453
+Math.LN10       // 2.302585092994046
+Math.LOG2E      // 1.4426950408889634
+Math.LOG10E     // 0.4342944819032518</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseDate">
+              <h2>Даты</h2>
+            </div>
+            <div class="collapse show" id="collapseDate">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date">Документация</a></p>
+              <div class="item">
+                <pre>let d = new Date();  // Mon Oct 09 2023 16:31:07 GMT+0300 (Восточная Европа, летнее время)
+Number(d)            // количество миллисекунд с 1970 года
+Date("2017-06-23");                 // объявление даты
+Date("2017");                       // Sun Jan 01 2017 02:00:00 GMT+0200 (Восточная Европа, стандартное время)
+Date("2017-06-23T12:00:00-09:45");  // дата - время YYYY-MM-DDTHH:MM:SSZ
+Date("June 23 2017");               // длинный формат даты
+Date("Jun 23 2017 07:45:00 GMT+0100 (Tokyo Time)"); // временная зона</pre>
+              </div>
+              <h3>Получить дату/время</h3>
+              <div class="item">
+                <pre>var d = new Date();
+a = d.getDay();     // получить день недели
+
+getDate();          // день месяца как число (1-31)
+getDay();           // день недели как число (0-6)
+getFullYear();      // 4-х значный год (yyyy)
+getHours();         // час (0-23)
+getMilliseconds();  // миллисекунды (0-999)
+getMinutes();       // минуты (0-59)
+getMonth();         // месяц (0-11)
+getSeconds();       // секунды (0-59)
+getTime();          // миллисекунды с 1970</pre>
+              </div>
+              <h3>Установка даты</h3>
+              <div class="item">
+                <pre>let d = new Date();
+d.setDate(d.getDate() + 7); // добавит неделю к дате
+
+setDate();          // день как число (1-31)
+setFullYear();      // год (опционально месяц и день)
+setHours();         // час (0-23)
+setMilliseconds();  // миллисекунды (0-999)
+setMinutes();       // минуты (0-59)
+setMonth();         // месяц (0-11)
+setSeconds();       // секунды (0-59)
+setTime();          // миллисекунды с 1970</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseReg">
+              <h2>Регулярные выражения</h2>
+            </div>
+            <div class="collapse show" id="collapseReg">
+              <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions">Документация</a></p>
+              <div class="item">
+                <pre>let a = str.search(/CheatSheet/i);</pre>
+              </div>
+              <h3>Модификаторы</h3>
+              <div class="item">
+                <pre>i      // сопоставление без учета регистра
+g      // глобальное сопоставление
+m      // многострочное сопоставление</pre>
+              </div>
+              <h3>Паттерны</h3>
+              <div class="item">
+                <pre>\          // Escape символ
+\d         // найти число
+\s         // найти пробел
+\b         // найти совпадение в начале или конце слова
+n+         // содержит хотя бы один n
+n*         // содержит ноль или более вхождений n
+n?         // содержит ноль или одно вхождение n
+^          // начало строки
+$          // конец строки
+\uxxxx     // найти символ Unicode
+.          // любой одиночный символ
+(a|b)      // a или b
+(...)      // секция группировки
+[abc]      // в диапазоне (a, b или c)
+[0-9]      // любое из чисел в диапазоне 0 - 9
+[^abc]     // не в диапазоне
+\s         // пробел
+a?         // 0 или одно a
+a*         // 0 или больше a
+a*?        // 0 или больше, ungreedy
+a+         // 1 или больше a
+a+?        // 1 или больше, ungreedy
+a{2}       // точно 2 a
+a{2,}      // 2 или больше a
+a{,5}      // до 5 a
+a{2,5}     // от 2 до 5 a
+a{2,5}?    // от 2 до 5 a, ungreedy
+[:punct:]  // любой символ пуктуации
+[:space:]  // любой символ пробела
+[:blank:]  // Space или Tab</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseEvents">
+              <h2>События</h2>
+            </div>
+            <div class="collapse show" id="collapseEvents">
+              <div class="item">
+                <pre><span>&lt;<span>button</span> <span>onclick</span>=<span>"myFunction();"</span>&gt;</span>
+&nbsp; Click here
+<span>&lt;/<span>button</span>&gt;</span></pre>
+              </div>
+              <h3>События мыши</h3>
+              <div class="item">
+                <p class="code">onclick, oncontextmenu, ondblclick, onmousedown, onmouseenter, onmouseleave, onmousemove, onmouseover, onmouseout, onmouseup</p>
+              </div>
+              <h3>Клавиатура</h3>
+              <div class="item">
+                <p class="code">onkeydown, onkeypress, onkeyup</p>
+              </div>
+              <h3>Window / Frame</h3>
+              <div class="item">
+                <p class="code">onabort, onbeforeunload, onerror, onhashchange, onload, onpageshow, onpagehide, onresize, onscroll, onunload</p>
+              </div>
+              <h3>Формы</h3>
+              <div class="item">
+                <p class="code">onblur, onchange, onfocus, onfocusin, onfocusout, oninput, oninvalid, onreset, onsearch, onselect, onsubmit</p>
+              </div>
+              <h3>Перетаскивание Drag</h3>
+              <div class="item">
+                <p class="code">ondrag, ondragend, ondragenter, ondragleave, ondragover, ondragstart, ondrop</p>
+              </div>
+              <h3>Буфер обмена</h3>
+              <div class="item">
+                <p class="code">oncopy, oncut, onpaste</p>
+              </div>
+              <h3>Медиа</h3>
+              <div class="item">
+                <p class="code">onabort, oncanplay, oncanplaythrough, ondurationchange, onended, onerror, onloadeddata, onloadedmetadata, onloadstart, onpause, onplay, onplaying, onprogress, onratechange, onseeked, onseeking, onstalled, onsuspend, ontimeupdate, onvolumechange, onwaiting</p>
+              </div>
+              <h3>Анимация</h3>
+              <div class="item">
+                <p class="code">animationend, animationiteration, animationstart</p>
+              </div>
+              <h3>Остальные события</h3>
+              <div class="item">
+                <p class="code">transitionend, onmessage, onmousewheel, ononline, onoffline, onpopstate, onshow, onstorage, ontoggle, onwheel, ontouchcancel, ontouchend, ontouchmove, ontouchstart</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapsePromise">
+              <h2>Promise</h2>
+            </div>
+            <div class="collapse show" id="collapsePromise">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">Документация</a></p>
+              <div class="item">
+                <pre>function <span style="color:#0000a2;font-weight:700">sum</span> (a, b) {
+<span style="color:#0100b6;font-weight:700">return</span> Promise(function (resolve, reject) {
+ <span style="color:#3c4c72;font-weight:700">setTimeout</span>(function () {                                       <span style="color:#00b418" class="jsComment">// отправляет запрос через 1 секунду</span>
+   <span style="color:#0100b6;font-weight:700">if</span> (<span style="color:#687687">typeof</span> a <span style="color:#687687">!</span><span style="color:#687687">==</span> <span style="color:#d80800">"number"</span> <span style="color:#687687">||</span> <span style="color:#687687">typeof</span> b <span style="color:#687687">!</span><span style="color:#687687">==</span> <span style="color:#d80800">"number"</span>) {        <span style="color:#00b418" class="jsComment">// проверка типа ответа</span>
+	 <span style="color:#0100b6;font-weight:700">return</span> reject(<span style="color:#0100b6;font-weight:700">new</span> <span style="font-style:italic">TypeError</span>(<span style="color:#d80800">"Inputs must be numbers"</span>));
+   }
+   resolve(a <span style="color:#687687">+</span> b);
+ }, <span style="color:#cd0000;font-style:italic">1000</span>);
+});
+}
+var myPromise <span style="color:#687687">=</span> sum(<span style="color:#cd0000;font-style:italic">10</span>, <span style="color:#cd0000;font-style:italic">5</span>);
+myPromsise.then(function (result) {
+<span style="color:#6d79de;font-weight:700">document</span>.<span style="color:#3c4c72;font-weight:700">write</span>(<span style="color:#d80800">" 10 + 5: "</span>, result);
+<span style="color:#0100b6;font-weight:700">return</span> sum(<span style="color:#585cf6;font-style:italic">null</span>, <span style="color:#d80800">"foo"</span>);              <span style="color:#00b418" class="jsComment">// Неверные данные и возврат другого промиса</span>
+}).then(function () {                   <span style="color:#00b418" class="jsComment">// Не вызывается из-за ошибки</span>
+}).<span style="color:#0100b6;font-weight:700">catch</span>(function (err) {               <span style="color:#00b418" class="jsComment">// Вместо этого вызывается обработчик catch, еще через секунду</span>
+<span style="font-style:italic">console</span><span style="color:#3c4c72;font-weight:700">.error</span>(err);                   <span style="color:#00b418" class="jsComment">// =&gt; Укажите два числа для суммирования.</span>
+});
+</pre>
+              </div>
+              <h3>Состояния</h3>
+              <div class="item">
+                <p class="code">pending, fulfilled, rejected</p>
+              </div>
+              <h3>Свойства</h3>
+              <div class="item">
+                <p class="code">Promise.length, Promise.prototype</p>
+              </div>
+              <h2>Методы</h2>
+              <div class="item">
+                <p class="code">Promise.all(iterable), Promise.race(iterable), Promise.reject(reason), Promise.resolve(value)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseJson">
+              <h2>JSON</h2>
+            </div>
+            <div class="collapse show" id="collapseJson">
+              <p><a href="https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/JSON">Документация</a></p>
+              <div class="item">
+                <pre>
+let str = '{"names":[' +                    // создать JSON объект
+'{"first":"Hakuna","lastN":"Matata" },' +
+'{"first":"Jane","lastN":"Doe" },' +
+'{"first":"Air","last":"Jordan" }]}';
+obj = JSON.parse(str);                      // парсить (анализировать)
+document.write(obj.names[1].first);         // доступ</pre>
+              </div>
+              <h3>Передача</h3>
+              <div class="item">
+                <pre>let myObj = { "name":"Jane", "age":18, "city":"Chicago" };  // создать объект
+let myJSON = JSON.stringify(myObj);                         // stringify
+window.location = "demo.php?x=" + myJSON;                   // отправить в php</pre>
+              </div>
+              <h3>Хранение и извлечение</h3>
+              <div class="item">
+                <pre>myObj = { "name":"Jane", "age":18, "city":"Chicago" };
+
+myJSON = JSON.stringify(myObj);                 // сохранить данные
+localStorage.setItem("testJSON", myJSON);
+
+text = localStorage.getItem("testJSON");        // получить данные
+obj = JSON.parse(text);
+
+document.write(obj.name);</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseErrors">
+              <h2>Ошибки</h2>
+            </div>
+            <div class="collapse show" id="collapseErrors">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/try...catch">Документация</a></p>
+              <div class="item">
+                <pre>try {                           // блок кода, который стоит попробовать
+&nbsp;undefinedFunction();
+}
+&nbsp;catch(err) {                    // блок для обработки ошибок
+&nbsp;console.log(err.message);
+}</pre>
+              </div>
+              <h3>Показ ошибки</h3>
+              <div class="item">
+                <pre>throw "My error message";    // выкинуть ошибку</pre>
+              </div>
+              <h3>Валидация Input</h3>
+              <div class="item">
+                <pre>let x = document.getElementById("mynum").value; // получить значение input
+try {
+&nbsp;if(x == "")  throw "empty";               // случаи ошибок
+&nbsp;if(isNaN(x)) throw "not a number";
+&nbsp;x = Number(x);
+&nbsp;if(x > 10)   throw "too high";
+}
+catch(err) {                                    // если есть ошибка
+&nbsp;document.write("Input is " + err);        // вывести ошибку
+&nbsp;console.error(err);                       // вывести ошибку в консоль
+}
+finally {
+&nbsp;document.write("</br />Done");            // выполняется независимо от результата try/catch
+}</pre>
+              </div>
+              <h3>Значение названия ошибок</h3>
+              <div class="item">
+                <pre>RangeErrorA              // number is "out of range"
+ReferenceErrorAn         // illegal reference has occurred
+SyntaxErrorA             // syntax error has occurred
+TypeErrorA               // type error has occurred
+URIErrorAn encodeURI()   // error has occurred</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-
-
-
-
-
     </main>
     <!-- main content end -->
     <!-- footer begin -->
