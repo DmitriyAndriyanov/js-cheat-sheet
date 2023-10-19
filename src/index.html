@@ -59,7 +59,7 @@
       </div>
 
       <div class="data-row grid">
-
+        <!-- Basic information -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseBase">
@@ -77,7 +77,7 @@
               </div>
               <h3>Задержка 1 сек</h3>
               <div class="item">
-                <pre>setTimeout(function () {
+                <pre>>setTimeout(function () {
 ...
 }, 1000);</pre>
               </div>
@@ -110,6 +110,7 @@ comment */
           </div>
         </div>
 
+        <!-- Variables -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseVariables">
@@ -376,6 +377,7 @@ x = 1;          // будет ошибка - переменная не была 
           </div>
         </div>
 
+        <!-- Data types -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseDataTypes">
@@ -447,6 +449,7 @@ x = 1;          // будет ошибка - переменная не была 
           </div>
         </div>
 
+        <!-- Type Conversion -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseTypeConversion">
@@ -531,6 +534,7 @@ let num = Number(str); // становится числом 123</pre>
           </div>
         </div>
 
+        <!-- Operators -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseOperators">
@@ -700,6 +704,7 @@ f(...args);</pre>
           </div>
         </div>
 
+        <!-- Strings -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseString">
@@ -719,11 +724,53 @@ let double = "double-quoted";</pre>
                 <pre>var esc = 'I don\'t \n know';   // \n перенос строки
 var len = abc.length;           // длина строки</pre>
               </div>
-              <p>Метод <strong>includes()</strong> определяет, содержит ли массив определённый элемент, возвращая в зависимости от этого <strong>true</strong> или <strong>false</strong>.</p>
+              <h3>Поиск подстроки</h3>
               <div class="item">
-                <pre>[1, 2, 3].includes(2) // true
-['cat', 'dog'].includes(('at')) // false</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIncludes">includes</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
+              <div id="stringIncludes" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.includes(searchString[, position])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">"Синий кит".includes("синий")</span>
+// вернёт false
+<span class="blue">"Синий кит".includes("кит")</span>
+// вернёт true</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIndexOf">indexOf</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringIndexOf" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.indexOf(searchValue, [fromIndex])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">"Синий кит".indexOf("Синий");</span>
+// вернёт  0
+<span class="blue">"Синий кит".indexOf("Голубой");</span>
+// вернёт -1</span></pre>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
               <p>Метод <strong>str.startsWith(searchString[, position])</strong> помогает определить, начинается ли строка с символов указанных в скобках, возвращая, соответственно, <strong>true</strong> или <strong>false</strong>.</p>
               <div class="item">
                 <pre>var str = "Быть или не быть...";
@@ -749,16 +796,6 @@ str.endsWith("быть", 16); // true</pre>
 'абв'.repeat(1);   // 'абв'
 'абв'.repeat(2);   // 'абвабв'
 'абв'.repeat(3.5); // 'абвабвабв' - 3.5 будет преобразовано в целое число</pre>
-              </div>
-              <h3>Нахождение подстроки str.indexOf(substr, pos)</h3>
-              <p>Ищет подстроку <strong>substr</strong> в строке <strong>str</strong>, начиная с позиции <strong>pos</strong> (необязательный параметр), и возвращает позицию, на которой располагается совпадение, либо -1 при отсутствии совпадений</p>
-              <div class="item">
-                <pre>let str = 'Widget with id';
-
-alert( str.indexOf('Widget') ); // 0, подстрока 'Widget' найдена в начале
-alert( str.indexOf('widget') ); // -1, совпадений нет, чувствителен к регистру
-
-alert( str.indexOf("id") ); // 1, подстрока "id" найдена на позиции 1</pre>
               </div>
               <div class="item">
                 <pre>let str = 'Widget with id';
@@ -867,6 +904,7 @@ abc.concat(" ", str2);          // abc + " " + str2</pre>
           </div>
         </div>
 
+        <!-- loops -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseLoops">
@@ -932,6 +970,7 @@ document.write(i + ", ");       // пропустит 5
           </div>
         </div>
 
+        <!-- Conditions -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseIf">
@@ -1013,6 +1052,7 @@ switch (a) {
           </div>
         </div>
 
+        <!-- Arrays -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseArrays">
@@ -1025,367 +1065,762 @@ switch (a) {
 var dogs = new Array("Bulldog", "Beagle", "Labrador");
 
 alert(dogs[1]);             // доступ по индексу, начиная с 0
-dogs[0] = "Bull Terier";    // изменить первый элемент
-
-for (var i = 0; i < dogs.length; i++) { // разбор массива с помощью array.length
-  console.log(dogs[i]);
-}</pre>
+dogs[0] = "Bull Terier";    // изменить первый элемент</pre>
               </div>
-              <h3>Методы массива</h3>
+              <h3>Проверка на массив</h3>
               <div class="item">
-                <pre>["apple", "banana", "pear"].at(1) // 'banana' -элемент массива с данным индексом</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/at" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>let animals = dogs.concat(cats);  // объединить два массива - ['dog', 'cat']</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[12, 54, 18, 130, 44].every((elem) => elem >= 10);  // true- все элементы >= 10</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/every" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3, 4].fill(0, 2, 4)  // [1, 2, 0, 0] - заполняет значением 0 с позиции 2 по 4</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['spray','destruction'].filter((word) => word.length > 6) // ['destruction']</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['spray','destruction'].find((value, index)=>{ return value.length>5; }); // 'destruction'</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/find" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3].findLast( val => val > 0); // 3 - поиск с конца массива</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, -2, 3, -4].findIndex( val => val == 3 ); // 2 - значение индекса м числом 3</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[-12, -13, 14, 15].findLastIndex( val => val > 0 ); // 3 - индекс, поиск с конца</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, [3, 4]].flat();  // [1, 2, 3, 4] - элементы рекурсивно "подняты"</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3, 4].map((num) => [num * 2]);  // [[2], [4], [6], [8]] новый массив с результатом</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3, 4].flatMap((num) => [num * 2]);  // [2, 4, 6, 8] новый массив с плоской структурой</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['a', 'b', 'c'].forEach((el) => console.log(el));  // 'a' затем 'b' затем 'c'</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>Array.from('foo');  // ['f', 'o', 'o'] массив из arrayLike объекта
-Array.from([1, 2, 3], (x) => x + x)  // [2, 4, 6]</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>Array.fromAsync(asyncIterable).then((array) => console.log(array));  // новый массив из асинхронного итерируемого , итерируемого или массивоподобного объекта</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3].includes(2);  // true - массив содержит 2</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[2, 5, 9].indexOf(9, 2);  // 2 - индекс значения 9, поиск с индекса 2</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>Array.isArray([1]);  // true - объект является массивом</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIsArray">isArray</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-              <div class="item">
-                <pre>['Fire', 'Air', 'Water'].join('-');  // 'Fire-Air-Water' - объединяет элементы в строку</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
+              <div id="arrayIsArray" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Array.isArray(obj)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">Array.isArray([1])</span>
+// true - объект является массивом</pre>
                 </div>
               </div>
+              <h3>Добавление/удаление элементов</h3>
               <div class="item">
-                <pre>let arr = ['a', 'b'];
-let iterator = arr.keys();  // возвращает новый итератор массива Array Iterator, содержащий ключи каждого индекса в массиве
-
-console.log(iterator.next()); // { value: 0, done: false }
-console.log(iterator.next()); // { value: 1, done: false }
-console.log(iterator.next()); // { value: undefined, done: true }</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/keys" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['Dodo', 'Tiger', 'Dodo'].lastIndexOf('Dodo');  // 3 последний индекс c таким значением</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>Array.of(1, 2, 3);  // [1, 2, 3] новый массив</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/of" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['a', 'b', 'c'].pop();  // 'c' - удаляет последний элемент, возвращает его значение</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['a', 'b'].push('c', 'd');  // 4 - добавит элементы в конец массива, вернёт длину</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPush">push</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/push" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
+              <div id="arrayPush" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.push(element1, ..., elementN)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['a', 'b'].push('c', 'd')</span>
+// 4 - добавит элементы в конец массива, вернёт длину</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>let initialValue = 0;
-[1, 2, 3, 4].reduce((accum, currVal) => accum + currVal, initialValue);  // 10</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPop">pop</pre>
                 <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-              <div class="item">
-                <pre>[1, 2, 3, 4].reduceRight((accum, currVal) => accum - currVal);  // -2, справо налево 4-3-2-1 = -2</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
+              <div id="arrayPop" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.pop()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['a', 'b', 'c'].pop()</span>
+// 'c' - удаляет последний элемент, возвращает его значение</pre>
                 </div>
               </div>
               <div class="item">
-                <pre>['one', 'two', 'three'].reverse();  // ['three', 'two', 'one'] - изменяет сам массив</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>[1, 2, 3].toReversed();  // [3, 2, 1] - новый массив с элементами в обратном порядке</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['one', 'two', 'three'].shift();  // 'one' - удаляет первый элемент, возвращает его значение</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayShift">shift</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
+              <div id="arrayShift" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.push(element1, ..., elementN)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['one', 'two', 'three'].shift()</span>
+// 'one' - удаляет первый элемент, возвращает его значение</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>['a', 'b', 'c', 'd', 'e'].slice(2, 4);  // ['c', 'd'] - новый массив из части исходного arr.slice([begin[, end]])</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayUnshift">unshift</pre>
                 <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-              <div class="item">
-                <pre>[1, 2, 3, 4, 5].some(element => element % 2 === 0);  // true - хотя бы один элемент удовлетворяет условию</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/some" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
+              <div id="arrayUnshift" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.unshift(element1[, ...[, elementN]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[0, 1, 2].unshift(-2, -1)</span>
+// [-2, -1, 0, 1, 2] - добавляет элемент в начало, возвращает новую длину</pre>
                 </div>
               </div>
               <div class="item">
-                <pre>['арбузы', 'бананы', 'Вишня'].sort();  // ['Вишня', 'арбузы', 'бананы'] - сортировка на основе Unicode</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayDelete">delete</pre>
+              </div>
+              <div id="arrayDelete" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">delete object.property
+delete object[property]</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let arr = ["I", "go", "home"];
+delete arr[1];</span>
+// ["I",  , "home"] - элемент стал undefined, длина массива не изменилась
+</pre>
                 </div>
               </div>
               <div class="item">
-                <pre>['Mar', 'Jan', 'Feb', 'Dec'].toSorted();  // ['Dec', 'Feb', 'Jan', 'Mar'] - новый отсортированный массив</pre>
-                <div class="buttons">
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="item">
-                <pre>['angel', 'clown', 'drum', 'sturgeon'].splice(2, 1, 'trumpet'); // удаляет 1 элемент по индексу 2 и вставляет "trumpet", возвращает удаленное значение</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySplice">splice</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
+              <div id="arraySplice" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">array.splice(start[, deleteCount[, item1[, item2[, ...]]]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['angel', 'clown', 'drum', 'sturgeon'].splice(2, 1, 'trumpet')</span>
+// удаляет 1 элемент по индексу 2 и вставляет "trumpet", возвращает удаленное значение</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>['Jan', 'Mar', 'Apr', 'May'].toSpliced(1, 0, 'Feb');  // ['Jan', 'Feb', 'Mar', 'Apr', 'May'] - новый массив</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSpliced">toSpliced</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
+              <div id="arrayToSpliced" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">array.splice(start[, deleteCount[, item1[, item2[, ...]]]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['Jan', 'Mar', 'Apr', 'May'].toSpliced(1, 0, 'Feb')</span>
+// ['Jan', 'Feb', 'Mar', 'Apr', 'May'] - НОВЫЙ массив</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>let date = new Date();
-[1337, date, 'foo'].toLocaleString(); // '1 337,04.10.2023, 01:14:28,foo' - строковое представление элементов, для каждого срабатывает свой toLocaleString</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySlice">slice</pre>
                 <div class="buttons">
-                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-
-
-
-
-
-
-
+              <div id="arraySlice" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.slice([begin[, end]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['a', 'b', 'c', 'd', 'e'].slice(2, 4)</span>
+// ['c', 'd'] - новый массив из части исходного</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre></pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayConcat">concat</pre>
                 <div class="buttons">
-                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-
-
-
+              <div id="arrayConcat" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">let new_array = old_array.concat(value1[, value2[, ...[, valueN]]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let animals = dogs.concat(cats)</span>
+// объединить два массива - ['dog', 'cat']</pre>
+                </div>
+              </div>
+              <h3>Перебор массивов</h3>
               <div class="item">
-                <pre></pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFor">for</pre>
+              </div>
+              <div id="arrayFor" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">for ([инициализация]; [условие]; [финальное выражение])
+  [инструкция]</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">for (var i = 0; i < dogs.length; i++) {
+  console.log(dogs[i]);
+}</span></pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayForEach">forEach</pre>
                 <div class="buttons">
-                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-
-
-
+              <div id="arrayForEach" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.forEach(function callback(currentValue, index, array) {
+    //your iterator
+}[, thisArg]);</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['a', 'b', 'c'].forEach((el) => console.log(el));</span>
+// 'a' затем 'b' затем 'c'</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>let arr = ["a", "b"];
-let eArr = arr.entries();
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFilter">filter</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFilter" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">// Стрелочная функция
+filter((element) => { ... } )
+filter((element, index) => { ... } )
+filter((element, index, array) => { ... } )
 
-console.log(eArr.next().value); // [0, 'a']
-console.log(eArr.next().value); // [1, 'b']</pre>
+// Колбэк-функция
+filter(callbackFn)
+filter(callbackFn, thisArg)
+
+// Встроенная колбэк-функция
+filter(function callbackFn(element) { ... })
+filter(function callbackFn(element, index) { ... })
+filter(function callbackFn(element, index, array){ ... })
+filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['spray','destruction'].filter((word) => word.length > 6)</span>
+// ['destruction']</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayMap">map</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayMap" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">const new_array = arr.map(function callback( currentValue[, index[, array]]) {
+    // Возвращает элемент для new_array
+}[, thisArg])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4].map((num) => [num * 2]);</span>
+// [[2], [4], [6], [8]] новый массив с результатом</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEvery">every</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/every" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayEvery" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.every(callback(currentValue[, index[, array]])[, thisArg])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[12, 54, 18, 130, 44].every((elem) => elem >= 10);</span>
+// true- все элементы >= 10</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySome">some</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/some" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arraySome" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.some(callback(element[, index[, array]])[, thisArg])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4, 5].some(element => element % 2 === 0);</span>
+// true - хотя бы один элемент удовлетворяет условию</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduce">reduce</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayReduce" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">array.reduce(callback[, initialValue])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let initialValue = 0;
+[1, 2, 3, 4].reduce((accum, currVal) => accum + currVal, initialValue);</span>
+// 10</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduceRight">reduceRight</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayReduceRight" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.reduceRight(callback[, initialValue])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4].reduceRight((accum, currVal) => accum - currVal);</span>
+// -2, справо налево 4-3-2-1 = -2</pre>
+                </div>
+              </div>
+              <h3>Поиск в массиве</h3>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIndexOf">indexOf</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayIndexOf" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.indexOf(searchElement[, fromIndex = 0])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[2, 5, 9].indexOf(9, 2)</span>
+// 2 - индекс значения 9, поиск с индекса 2</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayLastIndexOf">lastIndexOf</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayLastIndexOf" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.lastIndexOf(searchElement[, fromIndex = arr.length])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['Dodo', 'Tiger', 'Dodo'].lastIndexOf('Dodo')</span>
+// 3 последний индекс c таким значением</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIncludes">includes</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayIncludes" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.includes(searchElement[fromIndex = 0])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3].includes(2)</span>
+// true - массив содержит 2</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFind">find</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/find" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFind" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.find(callback[, thisArg])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['spray','destruction'].find((value, index)=>{ return value.length > 5; })</span>
+// 'destruction' - возвращает значение первого найденного в массиве элемента,
+которое удовлетворяет условию переданному в callback функции.
+В противном случае возвращается undefined.</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLast">findLast</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFindLast" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">findLast(callbackFn)
+findLast(callbackFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3].findLast( val => val > 0)</span>
+// 3 - поиск с конца массива</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindIndex">findIndex</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFindIndex" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">findIndex(callbackFn)
+findIndex(callbackFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, -2, 3, -4].findIndex( val => val == 3 )</span>
+// 2 - значение индекса c числом 3</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLastIndex">findLastIndex</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFindLastIndex" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">findLastIndex(callbackFn)
+findLastIndex(callbackFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[-12, -13, 14, 15].findLastIndex( val => val > 0 )</span>
+// 3 - индекс, поиск с конца</pre>
+                </div>
+              </div>
+              <h3>Сортировка и преобразование</h3>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySort">sort</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arraySort" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">sort()
+sort(compareFn)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['арбузы', 'бананы', 'Вишня'].sort()</span>
+// ['Вишня', 'арбузы', 'бананы'] - сортировка на основе Unicode</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSorted">toSorted</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayToSorted" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">toSorted()
+toSorted(compareFn)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['Mar', 'Jan', 'Feb', 'Dec'].toSorted()</span>
+// ['Dec', 'Feb', 'Jan', 'Mar'] - отсортированная КОПИЯ массива</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReverse">reverse</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayReverse" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">reverse()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['one', 'two', 'three'].reverse()</span>
+// ['three', 'two', 'one'] - изменяет сам массив</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToReversed">toReversed</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayToReversed" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">reverse()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3].toReversed()</span>
+// [3, 2, 1] - НОВЫЙ массив с элементами в обратном порядке</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayJoin">join</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayJoin" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">join()
+join(separator)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">['Fire', 'Air', 'Water'].join('-')</span>
+// 'Fire-Air-Water' - объединяет элементы в строку</pre>
+                </div>
+              </div>
+              <h3>Другие методы</h3>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayAt">at</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/at" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayAt" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">at(index)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">["apple", "banana", "pear"].at(1)</span>
+// 'banana' -элемент массива с данным индексом</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFill">fill</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFill" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">fill(value)
+fill(value, start)
+fill(value, start, end)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4].fill(0, 2, 4)</span>
+// [1, 2, 0, 0] - заполняет значением 0 с позиции 2 по 4</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlat">flat</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFlat" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">flat()
+flat(depth)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, [3, 4]].flat()</span>
+// [1, 2, 3, 4] - элементы рекурсивно "подняты"</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlatMap">flatMap</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFlatMap" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">flatMap(callbackFn)
+flatMap(callbackFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4].flatMap((num) => [num * 2])</span>
+// [2, 4, 6, 8] новый массив с плоской структурой</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFrom">from</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFrom" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Array.from(arrayLike)
+Array.from(arrayLike, mapFn)
+Array.from(arrayLike, mapFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">Array.from('foo')</span>
+// ['f', 'o', 'o'] массив из arrayLike объекта
+<span class="blue">Array.from([1, 2, 3], (x) => x + x)</span>
+// [2, 4, 6]</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFromAsync">fromAsync</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayFromAsync" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Array.fromAsync(arrayLike)
+Array.fromAsync(arrayLike, mapFn)
+Array.fromAsync(arrayLike, mapFn, thisArg)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">Array.fromAsync(asyncIterable).then((array) => console.log(array))</span>
+// новый массив из асинхронного итерируемого,
+итерируемого или массивоподобного объекта</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayKeys">keys</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/keys" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayKeys" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">keys()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let arr = ['a', 'b'];
+let iterator = arr.keys();</span>
+// возвращает новый итератор массива Array Iterator,
+// содержащий ключи каждого индекса в массиве
+
+console.log(iterator.next()); // { value: 0, done: false }
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEntries">entries</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/entries" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
+              <div id="arrayEntries" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">entries()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let arr = ["a", "b"];
+let eArr = arr.entries();
+
+console.log(eArr.next().value); // [0, 'a']
+console.log(eArr.next().value); // [1, 'b']</span></pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>[1, 2, 3, 4, 5].copyWithin(0, 3, 4); // [4, 2, 3, 4, 5]</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayOf">of</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/of" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayOf" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Array.of(element0[, element1[, ...[, elementN]]])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">Array.of(1, 2, 3)</span>
+// [1, 2, 3] новый массив из произвольного числа аргументов</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToLocaleString">toLocaleString</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayToLocaleString" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.toLocaleString();</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let date = new Date();
+[1337, date, 'foo'].toLocaleString();</span>
+// '1 337,04.10.2023, 01:14:28,foo'
+// строковое представление элементов,
+// для каждого срабатывает свой toLocaleString</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayCopyWithin">copyWithin</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-
-
-
-
-
+              <div id="arrayCopyWithin" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">arr.copyWithin(target, start[, end = this.length])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">[1, 2, 3, 4, 5].copyWithin(0, 3, 4)</span>
+// [4, 2, 3, 4, 5]
+// копирует последовательность элементов массива внутри него
+// в позицию, начинающуюся по индексу target</pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        <!-- Numbers and Math -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseMath">
@@ -1442,6 +1877,7 @@ Math.LOG10E     // 0.4342944819032518</pre>
           </div>
         </div>
 
+        <!-- Date -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseDate">
@@ -1491,6 +1927,7 @@ setTime();          // миллисекунды с 1970</pre>
           </div>
         </div>
 
+        <!-- Regular expressions -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseReg">
@@ -1544,6 +1981,7 @@ a{2,5}?    // от 2 до 5 a, ungreedy
           </div>
         </div>
 
+        <!-- Events -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseEvents">
@@ -1595,6 +2033,7 @@ a{2,5}?    // от 2 до 5 a, ungreedy
           </div>
         </div>
 
+        <!-- Promises -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapsePromise">
@@ -1639,6 +2078,7 @@ myPromsise.then(function (result) {
           </div>
         </div>
 
+        <!-- JSON -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseJson">
@@ -1677,6 +2117,7 @@ document.write(obj.name);</pre>
           </div>
         </div>
 
+        <!-- Errors -->
         <div class="grid-item">
           <div class="block">
             <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseErrors">

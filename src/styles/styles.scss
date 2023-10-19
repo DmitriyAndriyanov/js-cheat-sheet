@@ -170,6 +170,10 @@ main {
     width: 100%;
   }
 }
+body:not(.modal-open) .grid-item:hover {
+  position: relative;
+  z-index: 100;
+}
 .block {
   border-top: 2px solid #bbb;
   background-color: #fff;
@@ -208,6 +212,10 @@ main {
     &:not(.collapsed) h2:after {
       transform: translateY(-50%) rotate(-180deg);
     }
+
+    & ~ .collapse {
+      padding-bottom: 10px;
+    }
   }
   .fa, .fas {
     font-size: 0.875rem;
@@ -229,6 +237,10 @@ main {
     }
   }
 
+  .collapse > .item {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
   .buttons {
     display: flex;
   }
@@ -248,15 +260,47 @@ main {
   }
 
   pre {
+    flex-grow: 1;
     font-weight: 700;
-    color: #555;
+    color: green;
     line-height: 1.2rem;
     overflow-x: hidden;
+
+    &.green,
+    .green {
+      color: green;
+    }
+
+    &.blue,
+    .blue {
+      color: blue;
+    }
+
+    &.red,
+    .red {
+      color: red;
+    }
+
+    &.black,
+    .black {
+      color: #222;
+    }
 
     &:hover {
       overflow-y: hidden;
       overflow-x: auto;
     }
+
+    &[data-bs-target] {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  }
+
+  .slidebox {
+    background: #fbfbe0;
+    border-bottom: 1px solid #999;
   }
 
   h3 {
@@ -278,6 +322,13 @@ main {
 
     a {
       color: blue;
+    }
+  }
+
+  .modal-body {
+    p {
+      margin: 0 0 1rem;
+      font-size: 1rem;
     }
   }
 
@@ -362,6 +413,7 @@ main {
 // Modal windows
 .modal-dialog {
   max-width: 1000px !important;
+  z-index: 200;
 
   h3 {
     margin: 0;
