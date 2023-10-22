@@ -724,9 +724,14 @@ let double = "double-quoted";</pre>
                 <pre>var esc = 'I don\'t \n know';   // \n перенос строки
 var len = abc.length;           // длина строки</pre>
               </div>
+              <p>Для получения символа используем <strong>[]</strong> или метод <strong>at</strong></p>
+              <div class="item">
+                <pre>'abcd'[2];                      // 'c'
+'abcd'.at(1);                   // 'b'</pre>
+              </div>
               <h3>Поиск подстроки</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIncludes">includes</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIncludes">includes        // содержит ли строка заданную подстроку</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -745,7 +750,7 @@ var len = abc.length;           // длина строки</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIndexOf">indexOf</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringIndexOf">indexOf         // индекс первого вхождения указанного значения</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -762,143 +767,354 @@ var len = abc.length;           // длина строки</pre>
 <span class="blue">"Синий кит".indexOf("Голубой");</span>
 // вернёт -1</span></pre>
                 </div>
-              </div>
-
-
-
-
-
-
-
-
-              <p>Метод <strong>str.startsWith(searchString[, position])</strong> помогает определить, начинается ли строка с символов указанных в скобках, возвращая, соответственно, <strong>true</strong> или <strong>false</strong>.</p>
-              <div class="item">
-                <pre>var str = "Быть или не быть...";
-str.startsWith("Быть");      // true
-str.startsWith("не быть");   // false
-str.startsWith("не быть", 9) // true</pre>
-              </div>
-              <p>Метод <strong>str.endsWith(searchString[, length])</strong> позволяет определить, заканчивается ли строка символами указанными в скобках, возвращая, соответственно, <strong>true</strong> или <strong>false</strong>. <br><strong>length</strong> - необязательный параметр. Позволяет искать внутри строки, обрезая её по диапазону; по умолчанию равен длине строки.</p>
-              <div class="item">
-                <pre>var str = "Быть или не быть, вот в чём вопрос.";
-str.endsWith("вопрос.");  // true
-str.endsWith("быть");     // false
-str.endsWith("быть", 16); // true</pre>
-              </div>
-              <p>Метод <strong>trim()</strong> удаляет пробельные символы с начала и конца строки</p>
-              <div class="item">
-                <pre>'   foo  '.trim()  // 'foo'</pre>
-              </div>
-              <p>Метод <strong>repeat()</strong> конструирует и возвращает новую строку, содержащую указанное количество соединённых вместе копий строки, на которой он был вызван.</p>
-              <div class="item">
-                <pre>'абв'.repeat(-1);  // RangeError
-'абв'.repeat(0);   // ''
-'абв'.repeat(1);   // 'абв'
-'абв'.repeat(2);   // 'абвабв'
-'абв'.repeat(3.5); // 'абвабвабв' - 3.5 будет преобразовано в целое число</pre>
-              </div>
-              <div class="item">
+                <div class="item">
                 <pre>let str = 'Widget with id';
 
 alert( str.indexOf('id', 2) ) // 12, т.к. поиск со 2 позиции</pre>
-              </div>
-              <p>Чтобы найти все вхождения подстроки, нужно запустить <strong>indexOf</strong> в цикле. Каждый раз, получив очередную позицию, начинаем новый поиск со следующей</p>
-              <div class="item">
-                <pre>let str = "Ослик Иа-Иа";
+                </div>
+                <p>Чтобы найти все вхождения подстроки, нужно запустить <strong>indexOf</strong> в цикле. Каждый раз, получив очередную позицию, начинаем новый поиск со следующей</p>
+                <div class="item">
+                <pre><span class="blue">let str = "Ослик Иа-Иа";
 let target = "Иа";
 
 let pos = -1;
 while ((pos = str.indexOf(target, pos + 1)) != -1) {
   alert( pos );
-}</pre>
+}</span></pre>
+                </div>
               </div>
-              <p>Также есть похожий метод <strong>str.lastIndexOf(substr, position)</strong>, который ищет с конца строки к её началу.<br>Он используется тогда, когда нужно получить самое последнее вхождение: перед концом строки или начинающееся до (включительно) определённой позиции.</p>
               <div class="item">
-                <pre>abc.lastIndexOf("lmno");</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringStartsWith">startsWith      // начинается ли строка с указанных символов</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringStartsWith" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.startsWith(searchString[, position])</pre>
+                </div>
+                <p><strong>position</strong> - Необязательный параметр. Позиция в строке, с которой начинать поиск searchString; по умолчанию 0.</p>
+                <div class="item">
+                  <pre><span class="blue">var str = "Быть или не быть...";
+str.startsWith("Быть");        <span class="green">// true</span>
+str.startsWith("не быть");     <span class="green">// false</span>
+str.startsWith("не быть", 9)   <span class="green">// true</span></span></pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringEndsWith">endsWith        // заканчивается ли строка указанными символами</pre>
+                <div class="buttons">
+                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringEndsWith" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.endsWith(searchString[, length])</pre>
+                </div>
+                <p><strong>length</strong> - необязательный параметр. Позволяет искать внутри строки, обрезая её по диапазону; по умолчанию равен длине строки.</p>
+                <div class="item">
+                  <pre><span class="blue">var str = "Быть или не быть, вот в чём вопрос.";
+str.endsWith("вопрос.");    <span class="green">// true</span>
+str.endsWith("быть");       <span class="green">// false</span>
+str.endsWith("быть", 16);   <span class="green">// true</span></span></pre>
+                </div>
               </div>
               <h3>Получение подстроки</h3>
-              <p><strong>str.slice(start [, end])</strong> - возвращает часть строки от <strong>start</strong> до (не включая) <strong>end</strong>.</p>
               <div class="item">
-                <pre>let str = "stringify";
-str.slice(0, 5)   // 'strin', символы от 0 до 5 (не включая 5)
-str.slice(0, 1)   // 's', от 0 до 1, не включая 1</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringSlice">slice           // возвращает часть строки от <strong>start</strong> до (не включая) <strong>end</strong></pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Если аргумент <strong>end</strong> отсутствует, <strong>slice</strong> возвращает символы до конца строки</p>
-              <div class="item">
-                <pre>let str = "stringify";
-alert( str.slice(2) ); // 'ringify', с позиции 2 и до конца</pre>
-              </div>
-              <p>Также для start/end можно задавать отрицательные значения. Это означает, что позиция определена как заданное количество символов с конца строки</p>
-              <div class="item">
-                <pre>let str = "stringify";
+              <div id="stringSlice" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.slice(beginIndex[, endIndex])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let str = "stringify";
+str.slice(0, 5)</span>
+// 'strin', символы от 0 до 5 (не включая 5)
+<span class="blue">str.slice(0, 1)</span>
+// 's', от 0 до 1, не включая 1</span></pre>
+                </div>
+                <p>Если аргумент <strong>end</strong> отсутствует, <strong>slice</strong> возвращает символы до конца строки</p>
+                <div class="item">
+                <pre><span class="blue">let str = "stringify";
+alert( str.slice(2) );</span>
+// 'ringify', с позиции 2 и до конца</pre>
+                </div>
+                <p>Также для start/end можно задавать отрицательные значения. Это означает, что позиция определена как заданное количество символов с конца строки</p>
+                <div class="item">
+                  <pre><span class="blue">let str = "stringify";</span>
 // начинаем с позиции 4 справа, а заканчиваем на позиции 1 справа
-alert( str.slice(-4, -1) ); // 'gif'</pre>
+<span class="blue">alert( str.slice(-4, -1) );</span>
+// 'gif'</pre>
+                </div>
               </div>
-              <p><strong>str.substring(start [, end])</strong> - возвращает часть строки между <strong>start</strong> и <strong>end</strong> (не включая) <strong>end</strong>. <br>можно задавать <strong>start</strong> больше <strong>end</strong>. <br>Если <strong>start</strong> больше <strong>end</strong>, то метод <strong>substring</strong> сработает так, как если бы аргументы были поменяны местами. <br>Отрицательные значения <strong>substring</strong>, в отличие от <strong>slice</strong>, не поддерживает, они интерпретируются как <strong>0</strong></p>
               <div class="item">
-                <pre>let str = "stringify";
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringSubstring">substring       // возвращает часть строки между <strong>start</strong> и (не включая) <strong>end</strong></pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/substring" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringSubstring" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.substring(indexA[, indexB])</pre>
+                </div>
+                <p>Можно задавать <strong>start</strong> больше <strong>end</strong>. <br>Если <strong>start</strong> больше <strong>end</strong>, то метод <strong>substring</strong> сработает так, как если бы аргументы были поменяны местами. <br>Отрицательные значения <strong>substring</strong>, в отличие от <strong>slice</strong>, не поддерживает, они интерпретируются как <strong>0</strong></p>
+                <div class="item">
+                  <pre><span class="blue">let str = "stringify";</span>
 // для substring эти два примера — одинаковы
-alert( str.substring(2, 6) ); // "ring"
-alert( str.substring(6, 2) ); // "ring"</pre>
-              </div>
-              <p><strong>str.substr(start [, length])</strong> - возвращает часть строки от <strong>start</strong> длины <strong>length</strong></p>
-              <div class="item">
-                <pre>let str = "stringify";
-// 'ring', получаем 4 символа, начиная с позиции 2
-alert( str.substr(2, 4) );</pre>
-              </div>
-              <p>Значение первого аргумента может быть отрицательным, тогда позиция определяется с конца</p>
-              <div class="item">
-                <pre>let str = "stringify";
-// 'gi', получаем 2 символа, начиная с позиции 4 с конца строки
-alert( str.substr(-4, 2) );</pre>
-              </div>
-              <p>Метод <strong>replace()</strong> выполняет внутри строки поиск с использованием регулярного выражения (объект <strong>RegExp</strong>), или строкового значения и возвращает новую строку, в которой будут заменены найденные значения.</p>
-              <div class="item">
-                <pre>'11-31-56'.replace("-", ":");  // '11:31:56'</pre>
-              </div>
-              <p>Когда первый аргумент метода <strong>replace</strong> является строкой, он заменяет только первое совпадение!<br>Чтобы заменить все вхождения, нужно воспользоваться флагом <strong>g</strong> (eсли у регулярного выражения есть флаг <strong>g</strong>, то он возвращает массив всех совпадений, флаг <strong>i</strong> делает регулярное выражение регистронезависимым).</p>
-              <div class="item">
-                <pre>'11-31-56'.replace( /-/g, ":" );             // '11:31:56'
-'Как твои дела?'.replace(/твои/gi, 'ваши');  // 'Как ваши дела?'
-'Привет Пока'..replace(/(\w+)\s(\w+)/, '$2 $1'); // 'Пока Привет'</pre>
+<span class="blue">alert( str.substring(2, 6) );   <span class="green">// "ring"</span>
+alert( str.substring(6, 2) );   <span class="green">// "ring"</span></span></span>
+</pre>
+                </div>
               </div>
               <div class="item">
-                <pre>abc.toUpperCase();              // к верхнему регистру
-abc.toLowerCase();              // к нижнему регистру
-abc.concat(" ", str2);          // abc + " " + str2</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringSubstr">substr          // возвращает указанное количество символов , начиная с указанной позиции</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/substr" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Метод <strong>charAt(index)</strong> возвращает указанный символ из строки. <strong>index</strong> - целое число от 0 до длины строки минус 1</p>
+              <div id="stringSubstr" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.substr(start[, length])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let str = "stringify";
+str.substr(2, 4)</span>
+// 'ring', получаем 4 символа, начиная с позиции 2</pre>
+                </div>
+                <p>Значение первого аргумента может быть отрицательным, тогда позиция определяется с конца</p>
+                <div class="item">
+                  <pre><span class="blue">let str = "stringify";
+str.substr(-4, 2)</span>
+// 'ring', получаем 4 символа, начиная с позиции 2</pre>
+                </div>
+              </div>
+              <h3>Полезные методы</h3>
               <div class="item">
-                <pre>'abcd'.charAt(2);               // 'c'</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringTrim">trim            // удаляет пробелы с начала и конца строки</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/trim" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Для получения символа используем <strong>[]</strong> или метод <strong>at</strong></p>
+              <div id="stringTrim" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.trim()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">'   foo  '.trim()</span>
+// 'foo'</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>'abcd'[2];                      // 'c'
-'abcd'.at(1);                   // 'b'</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringRepeat">repeat          // новую строку из копий исходной</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/repeat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Метод <strong>charCodeAt()</strong> возвращает числовое значение Юникода для символа по указанному индексу</p>
+              <div id="stringRepeat" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red"></pre>
+                </div>
+                <p>Метод <strong>repeat()</strong> конструирует и возвращает новую строку, содержащую указанное количество соединённых вместе копий строки, на которой он был вызван.</p>
+                <div class="item">
+                  <pre><span class="blue">'абв'.repeat(-1);    <span class="green">// RangeError</span>
+'абв'.repeat(0);     <span class="green">// ''</span>
+'абв'.repeat(1);     <span class="green">// 'абв'</span>
+'абв'.repeat(2);     <span class="green">// 'абвабв'</span>
+'абв'.repeat(3.5);   <span class="green">// 'абвабвабв' - 3.5 (преобразовано в целое число)</span></span>
+</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>'abcd'.charCodeAt(2);            // "c" -> 99</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringReplace">replace         // Заменяет символы в строке</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/replace" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Метод <strong>split</strong> разбивает строки в массив по указанному в первом параметре разделителю. Если он не задан - вернется вся строка. Если он задан как пустые кавычки, то каждый символ строки попадет в отдельный элемент массива. Вторым необязательным параметром можно указать максимальное количество элементов в получившемся массиве.</p>
+              <div id="string" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.replace(regexp|substr, newSubStr|function[, flags])</pre>
+                </div>
+                <p>Метод <strong>replace()</strong> выполняет внутри строки поиск с использованием регулярного выражения (объект <strong>RegExp</strong>), или строкового значения и возвращает новую строку, в которой будут заменены найденные значения.</p>
+                <div class="item">
+                  <pre><span class="blue">'11-31-56'.replace("-", ":")</span>
+// '11:31:56'</pre>
+                </div>
+                <p>Когда первый аргумент метода <strong>replace</strong> является строкой, он заменяет только первое совпадение!<br>Чтобы заменить все вхождения, нужно воспользоваться флагом <strong>g</strong> (eсли у регулярного выражения есть флаг <strong>g</strong>, то он возвращает массив всех совпадений, флаг <strong>i</strong> делает регулярное выражение регистронезависимым).</p>
+                <div class="item">
+                  <pre><span class="blue">11-31-56'.replace( /-/g, ":" )</span>
+// '11:31:56'
+<span class="blue">'Как твои дела?'.replace(/твои/gi, 'ваши')</span>
+// 'Как ваши дела?'
+<span class="blue">'Привет Пока'..replace(/(\w+)\s(\w+)/, '$2 $1')</span>
+// 'Пока Привет'</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>'abcd'.split(",");                 // ['abcd']
-'abcd'.split("");                  // ['a', 'b', 'c', 'd']
-'ab-cd-ef'.split('-');             // ['ab', 'cd', 'ef']
-'ab-cd-ef'.split('-', 2);          // ['ab', 'cd']</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringToUpperCase">toUpperCase     // к верхнему регистру</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <p>Метод <strong>numObj.toString([radix])</strong> возвращает строковое представление указанного объекта <strong>Number</strong>. radix - необязательный параметр, целое число между 2 и 36, определяющее основание системы счисления, используемой для представления числового значения.</p>
+              <div id="stringToUpperCase" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.toUpperCase()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">"алфавит".toUpperCase()</span>
+// 'АЛФАВИТ'</pre>
+                </div>
+              </div>
               <div class="item">
-                <pre>(6).toString(2)); // Выведет '110'
-(254).toString(16); // Выведет 'fe'</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringToLowerCase">toLowerCase     // к нижнему регистру</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
               </div>
-              <h3>JSON.stringify(obj)</h3>
-              <p>Обычно <strong>JSON</strong> используется для обмена данными с сервером.<br>
+              <div id="stringToLowerCase" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.toLowerCase()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">"АЛФАВИТ".toLowerCase()</span>
+// 'алфавит'</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringConcat">concat          // объединяет строки в новую</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/concat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringConcat" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.concat(string2, string3[, ..., stringN])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">abc.concat(" ", str2)</span>
+// abc + " " + str2</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringСharAt">charAt          // возвращает указанный символ из строки</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/charAt" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringСharAt" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.charAt(index)</pre>
+                </div>
+                <p><strong>index</strong> - целое число от 0 до длины строки минус 1</p>
+                <div class="item">
+                  <pre><span class="blue">'abcd'.charAt(2);  </span>// 'c'</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#string">charCodeAt      // Юникод число для символа по индексу</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="string" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.charCodeAt(index)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">'abcd'.charCodeAt(2)</span>
+// "c" -> 99</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringSplit">split           // разбивает строки в массив по указанному разделителю</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/split" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringSplit" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.split([separator[, limit]])</pre>
+                </div>
+                <p>Если разделитель не задан - вернется вся строка. Если он задан как пустые кавычки, то каждый символ строки попадет в отдельный элемент массива. Вторым необязательным параметром можно указать максимальное количество элементов в получившемся массиве.</p>
+                <div class="item">
+                  <pre><span class="blue">'abcd'.split(",");            <span class="green">// ['abcd']</span>
+'abcd'.split("");             <span class="green">// ['a', 'b', 'c', 'd']</span>
+'ab-cd-ef'.split('-');        <span class="green">// ['ab', 'cd', 'ef']</span>
+'ab-cd-ef'.split('-', 2);     <span class="green">// ['ab', 'cd']</span></span>
+</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringToString">toString        // строковое представление указанного объекта</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/toString" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringToString" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">str.toString()</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">let x = new String("Привет, мир");
+console.log(x.toString());</span>
+// Отобразит 'Привет, мир'
+</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringStringify">JSON.stringify  // преобразовывает объект JavaScript в строку</pre>
+                <div class="buttons">
+                  <a href="" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="stringStringify" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">JSON.stringify(value)
+JSON.stringify(value, replacer)
+JSON.stringify(value, replacer, space)</pre>
+                </div>
+                <p>Обычно <strong>JSON</strong> используется для обмена данными с сервером.<br>
                 При отправке на сервер данные всегда передаются в виде строки.<br>
                 Чтобы преобразовать объект JavaScript в строку, используется функция <strong>JSON.stringify()</strong>.</p>
-              <div class="item">
-                <pre>JSON.stringify({ "name":"John", "age":30}) // '{"name":"John","age":30}'</pre>
+                <div class="item">
+                  <pre><span class="blue">JSON.stringify({ "name":"John", "age":30})</span>
+// '{"name":"John","age":30}'</pre>
+                </div>
               </div>
             </div>
           </div>
@@ -980,11 +1196,11 @@ document.write(i + ", ");       // пропустит 5
               <h3>If else</h3>
               <div class="item">
                 <pre>
-if ((age >= 14) && (age < 70)) { // логическое условие
+if ((age >= 14) && (age < 70)) {  // логическое условие
  status = 1;                      // выполнено если условие true
-} else if (age > 60) {           // else if блок (опционально)
+} else if (age > 60) {            // else if блок (опционально)
  status = 2;                      // выполнено если условие false
-} else {                         // else if блок (опционально)
+} else {                          // else if блок (опционально)
  status = 3;
 }</pre>
               </div>
@@ -1069,7 +1285,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
               </div>
               <h3>Проверка на массив</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIsArray">isArray</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIsArray">isArray         // проверка на массив</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1087,7 +1303,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
               </div>
               <h3>Добавление/удаление элементов</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPush">push</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPush">push            // добавление элементов в конец</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/push" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1104,7 +1320,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPop">pop</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayPop">pop             // удаляет последний элемент массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1121,7 +1337,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayShift">shift</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayShift">shift           // удаляет первый элемент массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1138,7 +1354,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayUnshift">unshift</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayUnshift">unshift         // добавляет элементы в начало массива </pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1155,7 +1371,7 @@ dogs[0] = "Bull Terier";    // изменить первый элемент</pre
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayDelete">delete</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayDelete">delete          // изменяет указанное значение на undefined</pre>
               </div>
               <div id="arrayDelete" class="collapse slidebox">
                 <div class="item">
@@ -1170,7 +1386,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySplice">splice</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySplice">splice          // изменяет содержимое массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1187,7 +1403,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSpliced">toSpliced</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSpliced">toSpliced       // новый массив с изменениями</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1204,7 +1420,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySlice">slice</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySlice">slice   // новый массив с частью исходного</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1221,7 +1437,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayConcat">concat</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayConcat">concat          // соединяет массивы в новый</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1253,7 +1469,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayForEach">forEach</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayForEach">forEach         // выполняет указанную функцию один раз для каждого элемента</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1272,7 +1488,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFilter">filter</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFilter">filter          // новый массив с элементами, соответствующими условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1302,7 +1518,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayMap">map</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayMap">map             // новый массив с результатом вызова функции для каждого элемента</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1321,7 +1537,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEvery">every</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEvery">every           // проверяет, удовлетворяют ли все элементы условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/every" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1338,7 +1554,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySome">some</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySome">some            // проверяет, удовлетворяет ли какой-либо элемент условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/some" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1355,7 +1571,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduce">reduce</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduce">reduce          // применяет функцию reducer к каждому элементу</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1373,7 +1589,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduceRight">reduceRight</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReduceRight">reduceRight     // применяет функцию к аккумулятору и каждому значению массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1391,7 +1607,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
               </div>
               <h3>Поиск в массиве</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIndexOf">indexOf</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIndexOf">indexOf         // возвращает первый индекс с элементом</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1408,7 +1624,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayLastIndexOf">lastIndexOf</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayLastIndexOf">lastIndexOf     // возвращает последний индекс с элементом</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1425,7 +1641,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIncludes">includes</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayIncludes">includes        // содержит ли массив определённый элемент</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1442,7 +1658,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFind">find</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFind">find            // значение первого найденного в массиве элемента по условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/find" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1461,7 +1677,7 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLast">findLast</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLast">findLast        // справа - налево, значение первого найденного в массиве элемента по условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1479,7 +1695,7 @@ findLast(callbackFn, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindIndex">findIndex</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindIndex">findIndex       // индекс элемента в массиве по условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1497,7 +1713,7 @@ findIndex(callbackFn, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLastIndex">findLastIndex</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFindLastIndex">findLastIndex   // справа - налево, индекс элемента в массиве по условию</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1516,7 +1732,7 @@ findLastIndex(callbackFn, thisArg)</pre>
               </div>
               <h3>Сортировка и преобразование</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySort">sort</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySort">sort            // сортирует массив на месте</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1534,7 +1750,7 @@ sort(compareFn)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSorted">toSorted</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToSorted">toSorted        // отсортированная копия массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1552,7 +1768,7 @@ toSorted(compareFn)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReverse">reverse</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayReverse">reverse         // обращает порядок следования элементов</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1569,7 +1785,7 @@ toSorted(compareFn)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToReversed">toReversed</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToReversed">toReversed      // копия массива в обратном порядке</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1586,7 +1802,7 @@ toSorted(compareFn)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayJoin">join</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayJoin">join            // объединяет элементы массива в строку.</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1605,7 +1821,7 @@ join(separator)</pre>
               </div>
               <h3>Другие методы</h3>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayAt">at</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayAt">at              // возвращает элемент массива с данным индексом</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/at" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1622,7 +1838,7 @@ join(separator)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFill">fill</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFill">fill            // заполняет все элементы массива значением</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1641,7 +1857,7 @@ fill(value, start, end)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlat">flat</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlat">flat            // новый массив с плоской структурой</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1659,7 +1875,7 @@ flat(depth)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlatMap">flatMap</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFlatMap">flatMap         // новый массив, применяет функцию, преобразует в плоскую структуру</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1677,7 +1893,7 @@ flatMap(callbackFn, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFrom">from</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFrom">from            // новый массив из массивоподобного или итерируемого объекта</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1698,7 +1914,7 @@ Array.from(arrayLike, mapFn, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFromAsync">fromAsync</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayFromAsync">fromAsync       //  новый, массив из асинхронного итерируемого , итерируемого или массивоподобного объекта.</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1718,7 +1934,7 @@ Array.fromAsync(arrayLike, mapFn, thisArg)</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayKeys">keys</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayKeys">keys            // возвращает новый итератор массива, содержащий ключи каждого индекса в массиве</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/keys" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1741,7 +1957,7 @@ console.log(iterator.next()); // { value: undefined, done: true }</pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEntries">entries</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayEntries">entries         // возвращает новый объект итератора массива, содержащий пары ключ / значение для каждого индекса в массиве</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/entries" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1761,7 +1977,7 @@ console.log(eArr.next().value); // [1, 'b']</span></pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayOf">of</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayOf">of              // новый массив из произвольного числа аргументов</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/of" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1778,7 +1994,7 @@ console.log(eArr.next().value); // [1, 'b']</span></pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToLocaleString">toLocaleString</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayToLocaleString">toLocaleString  // строковое представление элементов массива</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -1798,7 +2014,7 @@ console.log(eArr.next().value); // [1, 'b']</span></pre>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayCopyWithin">copyWithin</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arrayCopyWithin">copyWithin      // копирует часть массива в себя же</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -2165,6 +2381,201 @@ URIErrorAn encodeURI()   // error has occurred</pre>
             </div>
           </div>
         </div>
+
+
+
+
+
+        <!-- Objects -->
+        <div class="grid-item">
+          <div class="block">
+            <div class="heading" data-bs-toggle="collapse" data-bs-target="#collapseObjects">
+              <h2>Объекты</h2>
+            </div>
+            <div class="collapse show" id="collapseObjects">
+              <p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object">Документация</a></p>
+              <h3>Создание объекта</h3>
+              <div class="item">
+                <pre>let user = new Object(); // синтаксис "конструктор объекта"
+let user = {};  // синтаксис "литерал объекта"</pre>
+              </div>
+              <div class="item">
+                <pre>let user = {     // объект
+  name: 'John',  // под ключом "name" хранится значение "John"
+  age: 30,
+  'likes birds': true // несколько слов оборачиваются в кавычки
+};
+                </pre>
+              </div>
+              <h3>Функция конструктор</h3>
+              <div class="item">
+                <pre>function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+var mycar = new Car("Eagle", "Talon TSi", 1993);
+var kenscar = new Car("Nissan", "300ZX", 1992);</pre>
+              </div>
+              <h3>Получение свойств</h3>
+              <div class="item">
+                <pre>user.name    // 'John'</pre>
+              </div>
+              <div class="item">
+                <pre>user['likes birds']   // true, в кавычках строка</pre>
+              </div>
+              <div class="item">
+                <pre>let key = "likes birds";
+user[key]   // true, ,без кавычек - переменная</pre>
+              </div>
+              <h3>Добавления свойств</h3>
+              <div class="item">
+                <pre>var myCar = new Object();
+myCar.color; // undefined, а не null</pre>
+              </div>
+              <div class="item">
+                <pre>myCar.color = 'red';
+myCar['year'] = 2015;</pre>
+              </div>
+              <h3>Удаление свойств</h3>
+              <div class="item">
+                <pre>delete myCar.color;</pre>
+              </div>
+              <h3>Перечисление всех свойств</h3>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#objectForIn">for...in        // перебирает строковые свойства (+ унаследованные)</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="objectForIn" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">for (variable in object)
+  statement</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">for (const prop in obj) {
+  console.log(`obj.${prop} = ${obj[prop]}`);
+}</span>
+// "obj.a = 1"
+// "obj.b = 2"
+// "obj.c = 3"</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#objectObjectKeys">Object.keys()   // возвращает массив из собственных перечисляемых свойств</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="objectObjectKeys" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Object.keys(obj)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">var arr = ["a", "b", "c"];
+Object.keys(arr)</span>
+// ['0', '1', '2']</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">var obj = { 0: "a", 1: "b", 2: "c" };
+Object.keys(obj)</span>
+// ['0', '1', '2']</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">var an_obj = { 100: "a", 2: "b", 7: "c" };
+Object.keys(an_obj)</span>
+// ['2', '7', '100']</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#objectObjectGetOwnPropertyNames">Object.getOwnPropertyNames()  // возвращает массив со всеми свойствами</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="objectObjectGetOwnPropertyNames" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Object.getOwnPropertyNames(obj)</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">const object1 = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+Object.getOwnPropertyNames(object1)</span>
+Array ["a", "b", "c"]</pre>
+                </div>
+              </div>
+              <h3>Устаревшие методы наследования</h3>
+              <div class="item">
+                <pre>const newUser = {};
+
+newUser.__proto__ = user;
+console.log(newUser.age);   // 30 - наследуется от user</pre>
+              </div>
+              <h3>Современные методы наследования</h3>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#objectSetPrototypeOf">Object.setPrototypeOf()   // устанавливает прототип указанного объекта в другой объект</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="objectSetPrototypeOf" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Object.setPrototypeOf(obj, prototype);
+// obj – объект, которому устанавливается прототип.
+// Prototype – новый прототип объекта (объект или null).</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">Object.setPrototypeOf(newUser, user)</span>
+// теперь newUser наследуется от user
+</pre>
+                </div>
+              </div>
+              <div class="item">
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#objectObjectCreate">Object.create()   // создаёт объект с указанным прототипом</pre>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/create" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="objectObjectCreate" class="collapse slidebox">
+                <div class="item">
+                  <pre class="red">Object.create(proto[, propertiesObject])</pre>
+                </div>
+                <div class="item">
+                  <pre><span class="blue">const john = Object.create(user)</span>
+</pre>
+                </div>
+              </div>
+
+
+
+
+              
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
 
       </div>
     </main>
