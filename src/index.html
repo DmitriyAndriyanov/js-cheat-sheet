@@ -410,14 +410,17 @@ x = 1;          // будет ошибка - переменная не была 
                 <pre>let id = Symbol("id");                  // символ Symbol</pre>
               </div>
               <div class="item">
-                <pre>let bigint = BigInt("123456789012345")  // BigInt</pre>
-              </div>
+              <pre>let bigint = BigInt("123456789012345")  // BigInt</pre>
+            </div>
               <h3>Специальные значения</h3>
               <div class="item">
                 <pre>let age = null;                         // Null</pre>
               </div>
               <div class="item">
                 <pre>let a; typeof a; let age = undefined;   // undefined</pre>
+              </div>
+              <div class="item">
+                <pre>typeof(NaN)   // number - это надо помнить!</pre>
               </div>
               <h3>Объекты</h3>
               <div class="item">
@@ -458,28 +461,35 @@ x = 1;          // будет ошибка - переменная не была 
             <div class="collapse show" id="collapseTypeConversion">
               <h3>Строковое преобразование</h3>
               <div class="item">
-                <pre>let value = true; // boolean
-value = String(value); // теперь value это строка "true"</pre>
+                <pre>let value = true;   // boolean
+value = String(value);   // теперь value это строка "true"</pre>
               </div>
               <div class="item">
-                <pre>let value = 123 + '27' // 12327 тут конкатенация строк</pre>
+                <pre>let value = 123 + '27'   // 12327 тут конкатенация строк</pre>
               </div>
               <h3>Численное преобразование</h3>
               <p>Численное преобразование происходит в математических функциях и выражениях (кроме знака конкатенации <strong>+</strong>).</p>
               <div class="item">
-                <pre>let value = "6" / "2"; // 3, строки преобразуются в числа</pre>
+                <pre>let value = "6" / "2";   // 3, строки преобразуются в числа</pre>
               </div>
               <div class="item">
-                <pre>let value = "125" * 2; // 250, строки преобразуются в числа</pre>
+                <pre>let value = "125" * 2;   // 250, строки преобразуются в числа</pre>
+              </div>
+              <p>Унарный плюс преобразует к числу</p>
+              <div class="item">
+                <pre>let num = +'123';  // становится числом 123
+let num = +true;   // становится числом 1
+let num = +'';     // становится числом 0
+let num = +'   ';  // становится числом 0</pre>
               </div>
               <p>Мы можем использовать функцию <strong>Number(value)</strong>, чтобы явно преобразовать <strong>value</strong> к числу:</p>
               <div class="item">
-                <pre>let str = "123"; // string
-let num = Number(str); // становится числом 123</pre>
+                <pre>let str = "123";   // string
+let num = Number(str);   // становится числом 123</pre>
               </div>
               <p>Методы работы с числами могут преобразовывать строку к числу:</p>
               <div class="item">
-                <pre>let num = parseInt('15px', 10); // становится числом 15 </pre>
+                <pre>let num = parseInt('15px', 10);   // становится числом 15 </pre>
               </div>
               <p>Правила численного преобразования:</p>
               <table>
@@ -522,16 +532,20 @@ let num = Number(str); // становится числом 123</pre>
               <p>Значения, которые интуитивно «пустые», вроде <strong>0</strong>, пустой строки, <strong>null</strong>, <strong>undefined</strong> и <strong>NaN</strong>, становятся <strong>false</strong>.</p>
               <p>Все остальные значения становятся <strong>true</strong>.</p>
               <div class="item">
-                <pre>let value = Boolean(1); // true</pre>
+                <pre>let value = Boolean(1);   // true</pre>
               </div>
               <div class="item">
-                <pre>let value = Boolean(0); // false</pre>
+                <pre>let value = Boolean(0);   // false</pre>
               </div>
               <div class="item">
-                <pre>let value = Boolean("Привет!"); // true</pre>
+                <pre>let value = Boolean("Привет!");   // true</pre>
               </div>
               <div class="item">
-                <pre>let value = Boolean(""); // false</pre>
+                <pre>let value = Boolean("");   // false</pre>
+              </div>
+              <p>Для приведения к логическому значению могут использоваться два знака отрицания:</p>
+              <div class="item">
+                <pre>let value = !!"Привет!";   // true</pre>
               </div>
               <p class="warning"><strong>"0"</strong> и строки из одних пробелов типа <strong>" "</strong> при логическом преобразовании всегда <strong>true</strong>.</p>
             </div>
@@ -954,7 +968,7 @@ str.substr(-4, 2)</span>
                   </a>
                 </div>
               </div>
-              <div id="string" class="collapse slidebox">
+              <div id="stringReplace" class="collapse slidebox">
                 <div class="item">
                   <pre class="red">str.replace(regexp|substr, newSubStr|function[, flags])</pre>
                 </div>
@@ -1042,14 +1056,14 @@ str.substr(-4, 2)</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#string">charCodeAt      // Юникод число для символа по индексу</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#stringCharCodeAt">charCodeAt      // Юникод число для символа по индексу</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
-              <div id="string" class="collapse slidebox">
+              <div id="stringCharCodeAt" class="collapse slidebox">
                 <div class="item">
                   <pre class="red">str.charCodeAt(index)</pre>
                 </div>
@@ -2040,6 +2054,23 @@ console.log(eArr.next().value); // [1, 'b']</span></pre>
 // в позицию, начинающуюся по индексу target</pre>
                 </div>
               </div>
+              <div class="item mt-3">
+                <h3 class="m-0" data-bs-toggle="collapse" data-bs-target="#arrayDestr">Деструктуризация массивов</h3>
+                <div class="buttons">
+                  <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <div id="arrayDestr" class="collapse slidebox">
+                <div class="item">
+                  <pre><span class="blue">let foo = ['one', 'two', 'three'];
+let [one, two, three] = foo;   <span class="green">// one = 'one', two = 'two', three = 'three'</span>
+let [a, ...other] = foo;       <span class="green">// a = 'one', other = ['two', 'three']</span>
+let [a, , b] = foo;            <span class="green">// a = 'one', b = 'three'</span>
+let [a = 'zero', , b = 'empty', c = 'last'] = foo;  <span class="green">// a = 'one', b = 'three', c = 'last'</span></span></pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2425,6 +2456,11 @@ let user = {};  // синтаксис "литерал объекта"</pre>
 
 var mycar = new Car("Eagle", "Talon TSi", 1993);
 var kenscar = new Car("Nissan", "300ZX", 1992);</pre>
+              </div>
+              <h3>Проверка объекта на наличие свойств</h3>
+              <div class="item">
+                <pre>if (Object.keys(obj).length) {...}
+// Object.keys(obj) создаст массив из свойств, у массива есть length</pre>
               </div>
               <h3>Получение свойств</h3>
               <div class="item">
