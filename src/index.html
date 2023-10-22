@@ -1412,7 +1412,11 @@ delete arr[1];</span>
               </div>
               <div id="arrayToSpliced" class="collapse slidebox">
                 <div class="item">
-                  <pre class="red">array.splice(start[, deleteCount[, item1[, item2[, ...]]]])</pre>
+                  <pre class="red">toSpliced(start)
+toSpliced(start, deleteCount)
+toSpliced(start, deleteCount, item1)
+toSpliced(start, deleteCount, item1, item2)
+toSpliced(start, deleteCount, item1, item2, /* …, */ itemN)</pre>
                 </div>
                 <div class="item">
                   <pre><span class="blue">['Jan', 'Mar', 'Apr', 'May'].toSpliced(1, 0, 'Feb')</span>
@@ -1420,7 +1424,7 @@ delete arr[1];</span>
                 </div>
               </div>
               <div class="item">
-                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySlice">slice   // новый массив с частью исходного</pre>
+                <pre class="green" data-bs-toggle="collapse" data-bs-target="#arraySlice">slice           // новый массив с частью исходного</pre>
                 <div class="buttons">
                   <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="btn btn-more" target="_blank" data-toggle="tooltip" title="Ссылка на документацию">
                     <i class="fas fa-arrow-up-right-from-square"></i>
@@ -2565,7 +2569,7 @@ console.log(newUser.age);   // 30 - наследуется от user</pre>
 
 
 
-              
+
             </div>
           </div>
         </div>
